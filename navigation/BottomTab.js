@@ -10,7 +10,8 @@ import Login from "../components/Login";
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    LolTab: LolStack
+    LolTab: LolStack,
+    Login: Login
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -23,6 +24,8 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
+        } else if (routeName === "Login") {
+          iconName = "rocket";
         }
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />

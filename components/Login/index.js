@@ -14,6 +14,8 @@ class Login extends Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    if (authStore.user) navigation.replace("BottomTab");
     return (
       <Form>
         <Item>
@@ -31,10 +33,7 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full onPress={() => authStore.login(this.state, navigation)}>
           <Text>Login</Text>
         </Button>
       </Form>

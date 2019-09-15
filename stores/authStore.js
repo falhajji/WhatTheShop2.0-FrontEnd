@@ -35,7 +35,7 @@ class AuthStore {
     }
   };
 
-  logout = () => {
+  logout = navigation => {
     this.setUser();
   };
 

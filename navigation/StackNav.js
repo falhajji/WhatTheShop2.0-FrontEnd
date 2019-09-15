@@ -1,16 +1,15 @@
-import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import BottomTab from "./BottomTab";
 
-// Components
 import Login from "../components/Login";
 import Lol from "../components/Lol";
+import Profile from "../components/Profile";
 
 const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
     Login: Login,
-    Lol: Lol
+    Lol: Lol,
+    Profile: Profile
   },
   {
     initialRouteName: "Login",
@@ -28,5 +27,5 @@ const StackNav = createStackNavigator(
     }
   }
 );
-const AppContainer = createAppContainer(StackNav);
-export default AppContainer;
+
+export default StackNav;
