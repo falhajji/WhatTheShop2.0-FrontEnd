@@ -8,8 +8,7 @@ const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
     Login: Login,
-    Lol: Lol,
-    Profile: Profile
+    Lol: Lol
   },
   {
     initialRouteName: "Login",
@@ -21,9 +20,6 @@ const StackNav = createStackNavigator(
       headerTextStyle: {
         fontWeight: "bold"
       }
-    },
-    cardStyle: {
-      backgroundColor: "rgb(8,80,129)"
     }
   }
 );
