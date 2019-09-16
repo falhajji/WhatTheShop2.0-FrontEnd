@@ -3,7 +3,6 @@ import { Icon } from "native-base";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
 // Navigators
-
 import ProfileStack from "./ProfileStack";
 import CarStack from "./CarStack";
 import CarDetail from "../components/CarDetail";

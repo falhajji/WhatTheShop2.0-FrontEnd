@@ -4,9 +4,8 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+  baseURL: "muffinbase.com/accounts/"
 });
-
 class AuthStore {
   user = null;
 
@@ -25,18 +24,30 @@ class AuthStore {
     }
   };
 
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
       const res = await instance.post("/accounts/login/", userData);
       const user = res.data;
       this.setUser(user.access);
     } catch (err) {
-      console.log("something went wrong logging in");
+      console.error(err);
     }
   };
 
   logout = navigation => {
     this.setUser();
+    navigation.replace("Login");
+  };
+
+  signup = async (userData, navigation) => {
+    try {
+      const res = await instance.post("create/", userData);
+      const data = res.data;
+      this.setUser(data.token);
+      navigation.replace("Profile");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   checkForToken = async () => {
