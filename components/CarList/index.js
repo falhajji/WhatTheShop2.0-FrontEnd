@@ -5,7 +5,8 @@ import { observer } from "mobx-react";
 import { List, Content } from "native-base";
 
 // Store
-import carStore from "../../store/carStore";
+import carStore from "../../stores/carStore";
+import cars from "./data";
 
 // Component
 import CarItem from "./CarItem";
@@ -13,20 +14,14 @@ import CarItem from "./CarItem";
 // import LogoutButton from "../CartButton/LogoutButton";
 
 class CarList extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: "Car List",
-    headerLeft: null
-    // headerRight: <CartButton />,
-    // headerLeft: <LogoutButton />
-  });
+  //   static navigationOptions = ({ navigation }) => ({
+  //     title: "Car List",
+  //     headerLeft: null
+  // headerRight: <CartButton />,
+  // headerLeft: <LogoutButton />
+  //   });
   render() {
-    const coffeeshops = carStore.coffeeshops;
-    let shops;
-    if (coffeeshops) {
-      shops = coffeeshops.map(coffeeShop => (
-        <CoffeeItem coffeeShop={coffeeShop} key={coffeeShop.id} />
-      ));
-    }
+    let shops = cars.map(car => <CarItem car={car} key={car.id} />);
     return (
       <Content>
         <List>{shops}</List>
