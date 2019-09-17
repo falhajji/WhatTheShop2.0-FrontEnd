@@ -3,16 +3,17 @@ import { createStackNavigator } from "react-navigation-stack";
 import Login from "../components/Login";
 import CarList from "../components/CarList";
 import BottomTab from "./BottomTab";
-import CarDetail from "../components/CarDetail";
-// import CartButton from "../../CarButton";
+import SignupScreen from "../components/Signup";
 
 const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
-    Login: Login
+    Login: Login,
+    Lol: Lol,
+    Signup: SignupScreen
   },
   {
-    initialRouteName: "BottomTab",
+    initialRouteName: "Signup",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {
