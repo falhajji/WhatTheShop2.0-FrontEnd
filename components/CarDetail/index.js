@@ -19,10 +19,11 @@ import {
 import styles from "./styles";
 
 //Store
-import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
+// import cars from "./data";
 
 // Components
-import CartButton from "../CartButton";
+// import CartButton from "../CartButton";
 
 class CarDetail extends Component {
   state = {
@@ -30,10 +31,10 @@ class CarDetail extends Component {
     option: "Small"
   };
 
-  static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("shop", {}).name,
-    headerRight: <CartButton />
-  });
+  // static navigationOptions = ({ navigation }) => ({
+  //   title: navigation.getParam("shop", {}).maker,
+  //   headerRight: <CartButton />
+  // });
 
   changeDrink = value => {
     this.setState({
@@ -56,15 +57,15 @@ class CarDetail extends Component {
   };
 
   render() {
-    const coffeeshop = this.props.navigation.getParam("shop", {});
+    const cars = this.props.navigation.getParam("shop", {});
     return (
       <Content>
         <List>
           <ListItem style={styles.top}>
             <Left>
               <Text style={styles.text}>
-                {coffeeshop.name + "\n"}
-                <Text note>{coffeeshop.location}</Text>
+                {cars.name + "\n"}
+                <Text note>{cars.location}</Text>
               </Text>
             </Left>
             <Body />

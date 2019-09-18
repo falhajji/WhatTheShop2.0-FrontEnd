@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     opacity: 1
   },
+  textlist: {
+    color: "black",
+    fontSize: 18,
+    fontWeight: "bold",
+    opacity: 1
+  },
   divider: {
     borderBottomColor: "black",
     borderBottomWidth: 1

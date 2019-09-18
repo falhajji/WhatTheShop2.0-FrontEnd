@@ -29,14 +29,14 @@ class CarItem extends Component {
                 source={{ uri: car.image }}
                 style={styles.thumbnail}
               />
-              <Text style={styles.text}>{car.maker}</Text>
-              <Text note style={styles.text}>
+              <Text style={styles.textlist}>{car.maker}</Text>
+              <Text note style={styles.textlist}>
                 {car.model}
-                <Text style={styles.text}>{car.color}</Text>
-                <Text style={styles.text}>{car.year}</Text>
-                <Text style={styles.text}>{car.milage}</Text>
-                <Text style={styles.text}>{car.gear}</Text>
-                <Text style={styles.text}>{car.price}</Text>
+                <Text style={styles.textlist}>{car.color}</Text>
+                <Text style={styles.textlist}>{car.year}</Text>
+                <Text style={styles.textlist}>{car.milage}</Text>
+                <Text style={styles.textlist}>{car.gear}</Text>
+                <Text style={styles.textlist}>{car.price}</Text>
               </Text>
             </Left>
           </CardItem>

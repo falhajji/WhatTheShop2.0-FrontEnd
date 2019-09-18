@@ -12,7 +12,7 @@ const ProfileStack = createStackNavigator(
   {
     initialRouteName: "Profile",
     defaultNavigationOptions: {
-      title: "Car Shop"
+      title: "User Profile"
     }
   }
 );

@@ -7,11 +7,13 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import ProfileStack from "./ProfileStack";
 import Login from "../components/Login";
 import CarList from "../components/CarList";
+import CarDetail from "../components/CarDetail";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
     CarTab: CarList
+    // DetailTab: CarDetail
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -21,16 +23,19 @@ const BottomTab = createBottomTabNavigator(
         if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";
-        } else if (routeName === "Login") {
+        } else if (routeName === "CarTab") {
+          iconName = "menu";
+        } else if (routeName === "DetailTab") {
           iconName = "rocket";
         }
+
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
         );
       }
     }),
     tabBarOptions: {
-      showLabel: false,
+      showLabel: true,
       activeTintColor: "#6200EE",
       inactiveTintColor: "#858585",
       style: {
