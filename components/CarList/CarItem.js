@@ -32,12 +32,12 @@ class CarItem extends Component {
               <Text style={styles.textlist}>{car.maker}</Text>
               <Text note style={styles.textlist}>
                 {car.model}
-                <Text style={styles.textlist}>{car.color}</Text>
-                <Text style={styles.textlist}>{car.year}</Text>
-                <Text style={styles.textlist}>{car.milage}</Text>
-                <Text style={styles.textlist}>{car.gear}</Text>
-                <Text style={styles.textlist}>{car.price}</Text>
               </Text>
+              <Text style={styles.textlist}>{car.color}</Text>
+              <Text style={styles.textlist}>{car.year}</Text>
+              <Text style={styles.textlist}>{car.milage}</Text>
+              <Text style={styles.textlist}>{car.gear}</Text>
+              <Text style={styles.textlist}>{car.price}</Text>
             </Left>
           </CardItem>
         </Card>

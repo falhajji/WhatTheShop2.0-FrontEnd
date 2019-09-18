@@ -20,15 +20,21 @@ import styles from "./styles";
 
 //Store
 import cartStore from "../../stores/cartStore";
-// import cars from "./data";
+// import car from "./data";
 
 // Components
 // import CartButton from "../CartButton";
 
 class CarDetail extends Component {
   state = {
-    drink: "Cappuccino",
-    option: "Small"
+    maker: "",
+    model: "",
+    color: "",
+    gear: "",
+    year: "",
+    milage: "",
+    price: "",
+    image: ""
   };
 
   // static navigationOptions = ({ navigation }) => ({
@@ -57,23 +63,23 @@ class CarDetail extends Component {
   };
 
   render() {
-    const cars = this.props.navigation.getParam("shop", {});
+    const car = this.props.navigation.getParam("shop", {});
     return (
       <Content>
         <List>
           <ListItem style={styles.top}>
             <Left>
               <Text style={styles.text}>
-                {cars.name + "\n"}
-                <Text note>{cars.location}</Text>
+                {car.maker + "\n"}
+                <Text note>{car.model}</Text>
               </Text>
             </Left>
             <Body />
             <Right>
-              <Thumbnail bordered source={{ uri: coffeeshop.img }} />
+              <Thumbnail bordered source={{ uri: car.image }} />
             </Right>
           </ListItem>
-          <ListItem style={{ borderBottomWidth: 0 }}>
+          {/* <ListItem style={{ borderBottomWidth: 0 }}>
             <Left>
               <Picker
                 note
@@ -85,9 +91,9 @@ class CarDetail extends Component {
                 <Picker.Item label="Cappuccino" value="Cappuccino" />
                 <Picker.Item label="Latte" value="Latte" />
                 <Picker.Item label="Espresso" value="Espresso" />
-              </Picker>
-            </Left>
-            <Body>
+              </Picker> */}
+          {/* </Left> */}
+          {/* <Body>
               <Picker
                 note
                 mode="dropdown"
@@ -99,11 +105,11 @@ class CarDetail extends Component {
                 <Picker.Item label="Medium" value="Medium" />
                 <Picker.Item label="Large" value="Large" />
               </Picker>
-            </Body>
-          </ListItem>
-          <Button full danger onPress={this.handleAdd}>
+            </Body> */}
+          {/* </ListItem> */}
+          {/* <Button full danger onPress={this.handleAdd}>
             <Text>Add</Text>
-          </Button>
+          </Button> */}
         </List>
       </Content>
     );

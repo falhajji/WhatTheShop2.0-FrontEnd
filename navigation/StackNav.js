@@ -3,11 +3,13 @@ import { createStackNavigator } from "react-navigation-stack";
 import Login from "../components/Login";
 import CarList from "../components/CarList";
 import BottomTab from "./BottomTab";
+import CarDetail from "../components/CarDetail";
 
 const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
-    Login: Login
+    Login: Login,
+    CarDetail: CarDetail
   },
   {
     initialRouteName: "BottomTab",
