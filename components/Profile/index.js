@@ -8,7 +8,9 @@ const Profile = ({ navigation }) => {
   return (
     <Card>
       <CardItem>
-        <Text>Welcome (How do I pass first_name)!</Text>
+        <Text>Welcome (How do I pass first_name)!{"\n"}</Text>
+      </CardItem>
+      <CardItem>
         <Button danger onPress={() => authStore.logout(navigation)}>
           <Text>Logout</Text>
         </Button>

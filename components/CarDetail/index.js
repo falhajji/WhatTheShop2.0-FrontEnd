@@ -12,8 +12,14 @@ import {
   List,
   ListItem,
   Picker,
-  Content
+  Card,
+  Container,
+  Header,
+  Content,
+  CardItem,
+  Icon
 } from "native-base";
+import { Image } from "react-native";
 
 // Style
 import styles from "./styles";
@@ -65,53 +71,50 @@ class CarDetail extends Component {
   render() {
     const car = this.props.navigation.getParam("shop", {});
     return (
-      <Content>
-        <List>
-          <ListItem style={styles.top}>
-            <Left>
-              <Text style={styles.text}>
-                {car.maker + "\n"}
-                <Text note>{car.model}</Text>
-              </Text>
-            </Left>
-            <Body />
-            <Right>
-              <Thumbnail bordered source={{ uri: car.image }} />
-            </Right>
-          </ListItem>
-          {/* <ListItem style={{ borderBottomWidth: 0 }}>
-            <Left>
-              <Picker
-                note
-                mode="dropdown"
-                style={{ width: 150 }}
-                selectedValue={this.state.drink}
-                onValueChange={this.changeDrink}
-              >
-                <Picker.Item label="Cappuccino" value="Cappuccino" />
-                <Picker.Item label="Latte" value="Latte" />
-                <Picker.Item label="Espresso" value="Espresso" />
-              </Picker> */}
-          {/* </Left> */}
-          {/* <Body>
-              <Picker
-                note
-                mode="dropdown"
-                style={{ width: 150 }}
-                selectedValue={this.state.option}
-                onValueChange={this.changeOption}
-              >
-                <Picker.Item label="Small" value="Small" />
-                <Picker.Item label="Medium" value="Medium" />
-                <Picker.Item label="Large" value="Large" />
-              </Picker>
-            </Body> */}
-          {/* </ListItem> */}
-          {/* <Button full danger onPress={this.handleAdd}>
-            <Text>Add</Text>
-          </Button> */}
-        </List>
-      </Content>
+      <Container>
+        <Header />
+        <Content>
+          <Card style={{ flex: 0 }}>
+            <CardItem>
+              <Left>
+                <Thumbnail source={{ uri: car.image }} />
+                <Body>
+                  <Text style={styles.text}>{car.maker} Car Detail Page</Text>
+                  <Text note>April 15, 2016</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem>
+              <Body>
+                <Image
+                  source={{ uri: car.image }}
+                  style={{ height: 250, width: 400, flex: 1 }}
+                />
+                <Text>
+                  {"\n"}This {car.year} {car.maker} {car.model} comes with a
+                  milage of {car.milage}.
+                </Text>
+                <Text style={styles.textlist}>
+                  {"\n"}Color: {car.color}
+                </Text>
+                <Text style={styles.textlist}>Gear: {car.gear}</Text>
+                <Text style={styles.textlist}>Seats: {car.seats}</Text>
+                <Text style={styles.textlist}>
+                  Price: KD {car.price + "\n"}
+                </Text>
+              </Body>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent textStyle={{ color: "#87838B" }}>
+                  <Icon name="heart" />
+                  <Text>1,926 stars</Text>
+                </Button>
+              </Left>
+            </CardItem>
+          </Card>
+        </Content>
+      </Container>
     );
   }
 }

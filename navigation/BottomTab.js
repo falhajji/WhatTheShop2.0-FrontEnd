@@ -25,9 +25,10 @@ const BottomTab = createBottomTabNavigator(
           iconType = "MaterialIcons";
         } else if (routeName === "CarTab") {
           iconName = "menu";
-        } else if (routeName === "DetailTab") {
-          iconName = "rocket";
         }
+        // } else if (routeName === "DetailTab") {
+        //   iconName = "smiley";
+        // }
 
         return (
           <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
