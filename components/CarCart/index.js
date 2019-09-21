@@ -8,7 +8,7 @@ import { Text, List, Button } from "native-base";
 import CartItem from "./CartItem";
 
 //Store
-import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
 
 class CarCart extends Component {
   render() {

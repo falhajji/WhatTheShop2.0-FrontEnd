@@ -129,8 +129,8 @@ class CarDetail extends Component {
 }
 
 CarDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("shop", {}).model,
-  headerRight: <CartButton />
+  title: navigation.getParam("shop", {}).model
+  // headerRight: <CartButton />
 });
 
 export default observer(CarDetail);

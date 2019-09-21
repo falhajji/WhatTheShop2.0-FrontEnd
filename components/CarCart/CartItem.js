@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
-import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
 
 class CartItem extends Component {
   render() {
