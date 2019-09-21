@@ -26,10 +26,9 @@ import styles from "./styles";
 
 //Store
 import cartStore from "../../stores/cartStore";
-// import car from "./data";
 
 // Components
-// import CartButton from "../CartButton";
+import CartButton from "../CartButton";
 
 class CarDetail extends Component {
   state = {
@@ -40,13 +39,9 @@ class CarDetail extends Component {
     year: "",
     milage: "",
     price: "",
-    image: ""
+    image: "",
+    quantity: 1
   };
-
-  // static navigationOptions = ({ navigation }) => ({
-  //   title: navigation.getParam("shop", {}).maker,
-  //   headerRight: <CartButton />
-  // });
 
   changeDrink = value => {
     this.setState({
@@ -79,7 +74,12 @@ class CarDetail extends Component {
               <Left>
                 <Thumbnail source={{ uri: car.image }} />
                 <Body>
-                  <Text style={styles.text}>{car.maker} Car Detail Page</Text>
+                  <Text style={styles.text}>
+                    Car Detail Page {"\n"}
+                    {car.maker}
+                    {"\n"}
+                    {car.model}
+                  </Text>
                   <Text note>April 15, 2016</Text>
                 </Body>
               </Left>
@@ -111,6 +111,15 @@ class CarDetail extends Component {
                   <Text>1,926 stars</Text>
                 </Button>
               </Left>
+              <Right>
+                <Button
+                  full
+                  danger
+                  onPress={() => cartStore.addItemToCart(this.state)}
+                >
+                  <Text>Add</Text>
+                </Button>
+              </Right>
             </CardItem>
           </Card>
         </Content>
@@ -118,5 +127,10 @@ class CarDetail extends Component {
     );
   }
 }
+
+CarDetail.navigationOptions = ({ navigation }) => ({
+  title: navigation.getParam("shop", {}).model,
+  headerRight: <CartButton />
+});
 
 export default observer(CarDetail);
