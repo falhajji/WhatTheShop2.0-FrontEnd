@@ -5,21 +5,20 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 // Navigators
 
 import ProfileStack from "./ProfileStack";
-import Login from "../components/Login";
-import CarList from "../components/CarList";
+import CarStack from "./CarStack";
 import CarDetail from "../components/CarDetail";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    CarTab: CarList
+    CarTab: CarStack
     // DetailTab: CarDetail
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
-        let iconName;
+        let iconName, iconType;
         if (routeName === "ProfileTab") {
           iconName = "person";
           iconType = "MaterialIcons";

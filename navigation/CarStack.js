@@ -3,14 +3,13 @@ import { createStackNavigator } from "react-navigation-stack";
 // Components
 import CarDetail from "../components/CarDetail";
 import CarList from "../components/CarList";
-import BottomTab from "./BottomTab";
+import CarCart from "../components/CarCart";
 
 const ProfileStack = createStackNavigator(
   {
     Carlist: CarList,
     Cardetail: CarDetail,
-    CoffeeCart: CoffeeCart,
-    BottomTab: BottomTab
+    CarCart: CarCart
   },
   {
     initialRouteName: "Carlist",

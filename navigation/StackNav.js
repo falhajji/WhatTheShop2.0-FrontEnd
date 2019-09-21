@@ -4,12 +4,12 @@ import Login from "../components/Login";
 import CarList from "../components/CarList";
 import BottomTab from "./BottomTab";
 import CarDetail from "../components/CarDetail";
+// import CartButton from "../../CarButton";
 
 const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
-    Login: Login,
-    CarDetail: CarDetail
+    Login: Login
   },
   {
     initialRouteName: "BottomTab",
