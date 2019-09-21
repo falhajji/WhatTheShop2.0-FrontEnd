@@ -9,7 +9,6 @@ const StackNav = createStackNavigator(
   {
     BottomTab: BottomTab,
     Login: Login,
-    Lol: Lol,
     Signup: SignupScreen
   },
   {
