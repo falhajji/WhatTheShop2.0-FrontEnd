@@ -4,7 +4,7 @@ import { Button, Text, Icon } from "native-base";
 import { observer } from "mobx-react";
 
 // Stores
-import cartStore from "../../store/cartStore";
+import cartStore from "../../stores/cartStore";
 
 class CartButton extends Component {
   render() {
@@ -12,7 +12,7 @@ class CartButton extends Component {
       <Button
         light
         transparent
-        onPress={() => this.props.navigation.navigate("CoffeeCart")}
+        onPress={() => this.props.navigation.navigate("CarCart")}
       >
         <Text>
           {cartStore.quantity + " "}
