@@ -2176,7 +2176,7 @@ expo-camera@^5.0.0:
     lodash "^4.6.0"
     prop-types "^15.6.0"
 
-expo-constants@^5.0.0:
+expo-constants@^5.0.0, expo-constants@~5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-5.0.1.tgz#597263397f269d7fe37d9cd6b30e305c16635a00"
   integrity sha512-Ny3teALKaE/jFzBg6DHr2GOoHpwQ/OLs3q3VugZOoR6hXCeVcCEP9MyNvhgn/cheeBDAa6UIgarv2Yufb5RMqQ==
@@ -2219,7 +2219,7 @@ expo-file-system@^5.0.0:
   dependencies:
     uuid-js "^0.7.5"
 
-expo-font@^5.0.0:
+expo-font@^5.0.0, expo-font@~5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-5.0.1.tgz#b3174134efd0ce3382db3a6c282147cba8bee203"
   integrity sha512-fa/z31lLi1ut6IGTf9/Kvw9KAlwSGQaBkuunuqjrW2ephqiXlHTeOOsaqKMirtmiqgsKOJysdlYUH1Aw03Y2bg==
@@ -4955,10 +4955,10 @@ react-native-webview@5.8.1:
     xmldoc "^0.4.0"
     yargs "^9.0.0"
 
-react-navigation-stack@^1.5.4:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.5.5.tgz#0b3cd98b7845a51d9ce9d7d678e9e3b9ed010bc3"
-  integrity sha512-qMhOhmUmyPNfFGWMbwv5flrNVsFU4JZSBWnONSgVGK4KWGW8DbobXBi4i4sBAC9Kg8EqJK0qyWcxnkMJJtfMWA==
+react-navigation-stack@^1.7.3:
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/react-navigation-stack/-/react-navigation-stack-1.7.3.tgz#2dce28bdc80bbd2bf09755a6aa7200055a907504"
+  integrity sha512-wOt7T5NkIFInnFw+cxkUHUbNrXbPqascScia6azMWSdHhx+gvz3uW4Ubyw+2NULHcoshU53boUuQ8lUmUrJdhg==
   dependencies:
     prop-types "^15.7.2"
 
