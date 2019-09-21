@@ -10,7 +10,7 @@ class CartItem extends Component {
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
-          <Text style={{ color: "white", marginLeft: 16 }}> {item.drink} </Text>
+          <Text style={{ color: "white", marginLeft: 16 }}> {item.car} </Text>
           <Text note style={{ marginLeft: 16 }}>
             {item.option}
           </Text>
