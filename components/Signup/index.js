@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Form, Item, Input, Button, Text } from "native-base";
+import { Form, Item, Input, Button, Text, Title, Body } from "native-base";
 
 // Store
 import authStore from "../../stores/authStore";
+import LogoutButton from "../Buttons/LogoutButton";
 
 class Signup extends Component {
   state = {
@@ -14,12 +15,19 @@ class Signup extends Component {
     first_name: "",
     last_name: ""
   };
-
+  static navigationOptions = ({ navigation }) => ({
+    title: "Sign Up"
+    // headerLeft: null
+    // headerRight: <CartButton />,
+    // headerLeft: <LogoutButton />
+  });
   render() {
     const { navigation } = this.props;
     if (authStore.user) navigation.replace("BottomTab");
     return (
       <Form>
+        <Title>Welcome to the Cool Carz App</Title>
+        <Text> Sign Up to start using this app and see some Cool Carz</Text>
         <Item>
           <Input
             placeholder="Email"
