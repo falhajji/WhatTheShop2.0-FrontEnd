@@ -1,21 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 
 // NativeBase Components
-import { Card, CardItem, Text, Button, Header } from "native-base";
+import { Card, CardItem, Text, Button, Header, Spinner } from "native-base";
 import authStore from "../../stores/authStore";
+import profileStore from "../../stores/profileStore";
 
-const Profile = ({ navigation }) => {
-  return (
-    <Card>
-      <CardItem>
-        <Text>Welcome (How do I pass first_name)!{"\n"}</Text>
-      </CardItem>
-      <CardItem>
-        <Button danger onPress={() => authStore.logout(navigation)}>
-          <Text>Logout</Text>
-        </Button>
-      </CardItem>
-    </Card>
-  );
-};
+class Profile extends Component {
+  componentDidMount = () => {
+    if (authStore.user) profileStore.fetchProfile();
+  };
+  render() {
+    if (!authStore.user) this.props.navigation.replace("Signup");
+    if (profileStore.loading) return <Spinner />;
+    return (
+      <Card>
+        <CardItem>
+          <Text>
+            Welcome {profileStore.profile.first_name}!{"\n"}
+          </Text>
+        </CardItem>
+        <CardItem>
+          <Button danger onPress={() => authStore.logout(navigation)}>
+            <Text>Logout</Text>
+          </Button>
+        </CardItem>
+      </Card>
+    );
+  }
+}
 export default Profile;

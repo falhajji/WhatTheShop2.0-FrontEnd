@@ -12,7 +12,7 @@ const ProfileStack = createStackNavigator(
     Signup: SignupScreen
   },
   {
-    initialRouteName: "Signup",
+    initialRouteName: "Profile",
     defaultNavigationOptions: {
       title: "User Profile Page"
     }

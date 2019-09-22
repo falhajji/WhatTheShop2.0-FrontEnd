@@ -10,20 +10,20 @@ class CartItem extends Component {
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
-          <Text style={{ color: "white", marginLeft: 16 }}> {item.car} </Text>
+          <Text style={{ color: "black", marginLeft: 16 }}> {item.model} </Text>
           <Text note style={{ marginLeft: 16 }}>
-            {item.option}
+            {item.manufacturer}
           </Text>
         </Left>
         <Body>
-          <Text style={{ color: "white" }}>{item.quantity}</Text>
+          <Text style={{ color: "black" }}>Quantity : {item.quantity}</Text>
         </Body>
         <Right>
           <Button
             transparent
             onPress={() => cartStore.removeItemFromCart(item)}
           >
-            <Icon name="trash" style={{ color: "white", fontSize: 21 }} />
+            <Icon name="trash" style={{ color: "blue", fontSize: 21 }} />
           </Button>
         </Right>
       </ListItem>

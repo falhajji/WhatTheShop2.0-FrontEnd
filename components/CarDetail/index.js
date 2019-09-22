@@ -26,20 +26,20 @@ import styles from "./styles";
 
 //Store
 import cartStore from "../../stores/cartStore";
+import CartButton from "../Buttons/CartButton";
 
 // Components
-// import CartButton from "../Buttons";
 
 class CarDetail extends Component {
   state = {
-    maker: "",
-    model: "",
-    color: "",
-    gear: "",
-    year: "",
-    milage: "",
-    price: "",
-    image: "",
+    manufacturer: this.props.navigation.getParam("car", {}).manufacturer,
+    model: this.props.navigation.getParam("car", {}).model,
+    color: this.props.navigation.getParam("car", {}).color,
+    gear: this.props.navigation.getParam("car", {}).gear,
+    year: this.props.navigation.getParam("car", {}).year,
+    milage: this.props.navigation.getParam("car", {}).milage,
+    price: this.props.navigation.getParam("car", {}).price,
+    image: this.props.navigation.getParam("car", {}).image,
     quantity: 1
   };
 
@@ -56,18 +56,14 @@ class CarDetail extends Component {
   };
 
   handleAdd = () => {
-    let item = {
-      ...this.state,
-      quantity: 1
-    };
-    cartStore.addItemToCart(item);
+    cartStore.addItemToCart(this.state);
   };
 
   render() {
-    const car = this.props.navigation.getParam("shop", {});
+    const car = this.props.navigation.getParam("car", {});
+    console.log("[CarDetail.js] car: ", car);
     return (
       <Container>
-        <Header />
         <Content>
           <Card style={{ flex: 0 }}>
             <CardItem>
@@ -75,8 +71,7 @@ class CarDetail extends Component {
                 <Thumbnail source={{ uri: car.image }} />
                 <Body>
                   <Text style={styles.text}>
-                    Car Detail Page {"\n"}
-                    {car.maker}
+                    {car.manufacturer}
                     {"\n"}
                     {car.model}
                   </Text>
@@ -107,17 +102,13 @@ class CarDetail extends Component {
             <CardItem>
               <Left>
                 <Button transparent textStyle={{ color: "#87838B" }}>
-                  <Icon name="heart" />
+                  <Icon name="star" />
                   <Text>1,926 stars</Text>
                 </Button>
               </Left>
               <Right>
-                <Button
-                  full
-                  danger
-                  onPress={() => cartStore.addItemToCart(this.state)}
-                >
-                  <Text>Add</Text>
+                <Button full danger onPress={() => this.handleAdd()}>
+                  <Text>Add To Cart</Text>
                 </Button>
               </Right>
             </CardItem>
@@ -129,8 +120,9 @@ class CarDetail extends Component {
 }
 
 CarDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("shop", {}).model
-  // headerRight: <CartButton />
+  // title: navigation.getParam("shop", {})
+  title: "Car Detail Page",
+  headerRight: <CartButton />
 });
 
 export default observer(CarDetail);

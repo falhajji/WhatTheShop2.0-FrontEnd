@@ -1,6 +1,6 @@
 const data = [
   {
-    maker: "JEEP",
+    manufacturer: "JEEP",
     model: "Wrangler",
     color: "Yellow",
     gear: "MANUAL",
@@ -11,7 +11,7 @@ const data = [
     image: "http://muffinbase.com/media/wrangler.jpeg"
   },
   {
-    maker: "NISSAN",
+    manufacturer: "NISSAN",
     model: "Rogue",
     color: "Red",
     gear: "AUTOMATIC",
@@ -22,7 +22,7 @@ const data = [
     image: "http://muffinbase.com/media/nissan_rogue.jpeg"
   },
   {
-    maker: "MCLAREN",
+    manufacturer: "MCLAREN",
     model: "Mercedes Benz SLR",
     color: "Navy Blue",
     gear: "MANUAL",
