@@ -15,7 +15,7 @@ class Login extends Component {
 
   render() {
     const { navigation } = this.props;
-    if (authStore.user) navigation.replace("BottomTab");
+    if (authStore.user) navigation.replace("Profile");
     return (
       <Form>
         <Item>

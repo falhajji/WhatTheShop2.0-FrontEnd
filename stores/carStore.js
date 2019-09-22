@@ -8,7 +8,7 @@ class CarStore {
   fetchAllCars = async () => {
     console.log("BEFORE");
     try {
-      let res = await axios.get("muffinbase.com/cars/list/");
+      let res = await axios.get("http://192.168.100.186:80/products/list/");
       console.log("AFTER AXIOS");
       let cars = res.data;
       this.cars = cars;
@@ -26,6 +26,6 @@ decorate(CarStore, {
 });
 
 let carStore = new CarStore();
-// carStore.fetchAllCars();
+carStore.fetchAllCars();
 
 export default carStore;

@@ -8,7 +8,7 @@ import CarCart from "../components/CarCart";
 const ProfileStack = createStackNavigator(
   {
     Carlist: CarList,
-    Cardetail: CarDetail,
+    CarDetail: CarDetail,
     CarCart: CarCart
   },
   {

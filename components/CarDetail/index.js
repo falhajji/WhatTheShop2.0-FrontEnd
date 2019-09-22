@@ -117,7 +117,7 @@ class CarDetail extends Component {
                   danger
                   onPress={() => cartStore.addItemToCart(this.state)}
                 >
-                  <Text>Add</Text>
+                  <Text>Add To Cart</Text>
                 </Button>
               </Right>
             </CardItem>

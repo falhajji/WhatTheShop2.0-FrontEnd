@@ -23,7 +23,7 @@ class Signup extends Component {
   });
   render() {
     const { navigation } = this.props;
-    if (authStore.user) navigation.replace("BottomTab");
+    if (authStore.user) navigation.replace("Profile");
     return (
       <Form>
         <Title>Welcome to the Cool Carz App</Title>
