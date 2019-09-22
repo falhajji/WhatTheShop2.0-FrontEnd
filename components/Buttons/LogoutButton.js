@@ -4,13 +4,13 @@ import { Button, Text, Icon } from "native-base";
 import { observer } from "mobx-react";
 
 // Stores
-import authStore from "../../store/authStore";
+import authStore from "../../stores/authStore";
 
 const LogoutButton = ({ navigation }) => {
   return (
     <Button transparent onPress={() => authStore.logout(navigation)}>
       <Text>
-        {"Logout "}
+        {"Logout"}
         <Icon
           type="FontAwesome"
           name="superpowers"
