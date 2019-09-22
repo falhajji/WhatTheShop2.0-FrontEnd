@@ -28,7 +28,7 @@ import styles from "./styles";
 import cartStore from "../../stores/cartStore";
 
 // Components
-import CartButton from "../CartButton";
+// import CartButton from "../Buttons";
 
 class CarDetail extends Component {
   state = {
