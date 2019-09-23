@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
   baseURL: "http://192.168.100.186:80/accounts/"
+  // baseURL: "http://localhost:80/accounts/"
 });
 class AuthStore {
   user = null;
