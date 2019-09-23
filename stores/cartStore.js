@@ -1,7 +1,14 @@
 import { decorate, observable, action, computed } from "mobx";
+import axios from "axios";
+
+const instance = axios.create({
+  baseURL: "http://localhost:80/cart/"
+});
 
 class CartStore {
   items = [];
+  cart = null;
+  loading = true;
 
   addItemToCart = item => {
     // console.log("Cart Store add item to cart", item);
@@ -27,6 +34,16 @@ class CartStore {
     this.items.forEach(item => (quantity = quantity + item.quantity));
     return quantity;
   }
+
+  fetchCart = async () => {
+    try {
+      const res = await instance.get();
+      this.cart = res.data;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
+  };
 }
 
 decorate(CartStore, {
@@ -34,7 +51,8 @@ decorate(CartStore, {
   addItemToCart: action,
   removeItemFromCart: action,
   checkoutCart: action,
-  quantity: computed
+  quantity: computed,
+  loading: observable
 });
 
 export default new CartStore();

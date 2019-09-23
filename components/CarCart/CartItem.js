@@ -10,13 +10,23 @@ class CartItem extends Component {
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
-          <Text style={{ color: "black", marginLeft: 16 }}> {item.model} </Text>
+          <Text style={{ color: "black", marginLeft: 16 }}>
+            {" "}
+            {cartStore.cart.product}{" "}
+          </Text>
           <Text note style={{ marginLeft: 16 }}>
-            {item.manufacturer}
+            {cartStore.cart.unit_price}
           </Text>
         </Left>
         <Body>
-          <Text style={{ color: "black" }}>Quantity : {item.quantity}</Text>
+          <Text style={{ color: "black" }}>
+            Quantity : {cartStore.cart.quantity}
+          </Text>
+        </Body>
+        <Body>
+          <Text style={{ color: "black" }}>
+            Quantity : {cartStore.cart.sub_total}
+          </Text>
         </Body>
         <Right>
           <Button
