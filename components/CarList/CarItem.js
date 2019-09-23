@@ -61,7 +61,7 @@ class CarItem extends Component {
               <Text style={styles.textlist}>{car.year}</Text>
             </Left>
             <Right>
-              {/* <Button full danger onPress={() => this.handleAdd()}>
+              {/* <Button small transparent onPress={() => this.handleAdd()}>
                 <Text>Add To Cart</Text>
               </Button> */}
             </Right>
