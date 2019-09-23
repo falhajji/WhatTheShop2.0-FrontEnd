@@ -7,12 +7,13 @@ import SignupScreen from "../components/Signup";
 
 const ProfileStack = createStackNavigator(
   {
+    // Welcome: WelcomeScreen,
     Profile: ProfileScreen,
     Login: LoginScreen,
     Signup: SignupScreen
   },
   {
-    initialRouteName: "Signup",
+    initialRouteName: "Profile",
     defaultNavigationOptions: {
       title: "User Profile Page"
     }

@@ -18,8 +18,8 @@ class CartButton extends Component {
           {cartStore.quantity + " "}
           <Icon
             type="FontAwesome"
-            name="coffee"
-            style={{ color: "white", fontSize: 15 }}
+            name="shopping-cart"
+            style={{ color: "blue", fontSize: 15 }}
           />
         </Text>
       </Button>
