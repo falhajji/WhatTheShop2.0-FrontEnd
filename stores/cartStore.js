@@ -4,14 +4,16 @@ class CartStore {
   items = [];
 
   addItemToCart = item => {
+    // console.log("Cart Store add item to cart", item);
     const foundItem = this.items.find(
-      cartItem => cartItem.car == item.car && cartItem.option == item.option
+      cartItem => cartItem.model == item.model && cartItem.year == item.year
     );
     if (foundItem) {
       foundItem.quantity++;
     } else {
       this.items.push(item);
     }
+    console.log(this.items);
   };
 
   removeItemFromCart = itemToDelete =>

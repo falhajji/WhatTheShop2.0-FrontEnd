@@ -4,12 +4,14 @@ import { createStackNavigator } from "react-navigation-stack";
 import CarDetail from "../components/CarDetail";
 import CarList from "../components/CarList";
 import CarCart from "../components/CarCart";
+import Login from "../components/Login";
 
-const ProfileStack = createStackNavigator(
+const CarStack = createStackNavigator(
   {
     Carlist: CarList,
     CarDetail: CarDetail,
-    CarCart: CarCart
+    CarCart: CarCart,
+    Login: Login
   },
   {
     initialRouteName: "Carlist",
@@ -19,4 +21,4 @@ const ProfileStack = createStackNavigator(
   }
 );
 
-export default ProfileStack;
+export default CarStack;

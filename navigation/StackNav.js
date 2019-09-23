@@ -12,7 +12,7 @@ const StackNav = createStackNavigator(
     Signup: SignupScreen
   },
   {
-    initialRouteName: "Signup",
+    initialRouteName: "BottomTab",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {

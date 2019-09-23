@@ -13,16 +13,27 @@ import styles from "./styles";
 // Component
 import CarItem from "./CarItem";
 import carStore from "../../stores/carStore";
-// import carStore from "../../stores/carStore";
-// import CartButton from "../CartButton";
-// import LogoutButton from "../CartButton/LogoutButton";
+
+import CartButton from "../Buttons/CartButton";
+import LogoutButton from "../Buttons/LogoutButton";
 
 class CarList extends Component {
+  state = {
+    manufacturer: this.props.navigation.getParam("car", {}).manufacturer,
+    model: this.props.navigation.getParam("car", {}).model,
+    color: this.props.navigation.getParam("car", {}).color,
+    gear: this.props.navigation.getParam("car", {}).gear,
+    year: this.props.navigation.getParam("car", {}).year,
+    milage: this.props.navigation.getParam("car", {}).milage,
+    price: this.props.navigation.getParam("car", {}).price,
+    image: this.props.navigation.getParam("car", {}).image,
+    quantity: 1
+  };
   static navigationOptions = ({ navigation }) => ({
-    title: "Car List"
-    // headerLeft: null
-    // headerRight: <CartButton />,
-    // headerLeft: <LogoutButton />
+    title: "Car List",
+    headerLeft: null,
+    headerRight: <CartButton />,
+    headerLeft: <LogoutButton />
   });
   render() {
     // const cars = carStore.cars;
