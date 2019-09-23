@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Card, CardItem, Text, Button, Header, Spinner } from "native-base";
@@ -20,7 +21,10 @@ class Profile extends Component {
           </Text>
         </CardItem>
         <CardItem>
-          <Button danger onPress={() => authStore.logout(navigation)}>
+          <Button
+            danger
+            onPress={() => authStore.logout(this.props.navigation)}
+          >
             <Text>Logout</Text>
           </Button>
         </CardItem>
@@ -28,4 +32,4 @@ class Profile extends Component {
     );
   }
 }
-export default Profile;
+export default observer(Profile);

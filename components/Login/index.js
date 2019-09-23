@@ -36,6 +36,14 @@ class Login extends Component {
         <Button full onPress={() => authStore.login(this.state, navigation)}>
           <Text>Login</Text>
         </Button>
+        <Text>Click here to signup </Text>
+        <Button
+          success
+          full
+          onPress={() => this.props.navigation.replace("Signup")}
+        >
+          <Text>Signup</Text>
+        </Button>
       </Form>
     );
   }

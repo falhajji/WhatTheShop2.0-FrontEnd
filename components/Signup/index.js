@@ -96,7 +96,7 @@ class Signup extends Component {
               <Button
                 success
                 full
-                onPress={() => authStore.login(this.state, navigation)}
+                onPress={() => this.props.navigation.replace("Login")}
               >
                 <Text>Login</Text>
               </Button>

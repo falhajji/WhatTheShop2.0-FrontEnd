@@ -5,7 +5,6 @@ import jwt_decode from "jwt-decode";
 
 const instance = axios.create({
   baseURL: "http://192.168.100.186:80/accounts/"
-
 });
 class AuthStore {
   user = null;
@@ -29,7 +28,7 @@ class AuthStore {
     try {
       const res = await instance.post("login/", userData);
       const user = res.data;
-      await this.setUser(user.access);
+      await this.setUser(user.token);
       navigation.replace("Profile");
     } catch (err) {
       console.error(err);
@@ -49,7 +48,7 @@ class AuthStore {
 
       const data = res.data;
       console.log(data);
-      this.setUser(data.token);
+      await this.setUser(data.token);
       navigation.replace("Profile");
     } catch (err) {
       console.error(err);

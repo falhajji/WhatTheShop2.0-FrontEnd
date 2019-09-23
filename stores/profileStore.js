@@ -7,7 +7,7 @@ class ProfileStore {
 
   fetchProfile = async () => {
     try {
-      let res = await axios.get("http://127.0.0.1:8000/accounts/");
+      let res = await axios.get("http://192.168.100.186:80/accounts/");
       console.log("AFTER AXIOS");
 
       this.profile = res.data;
@@ -25,6 +25,5 @@ decorate(ProfileStore, {
 });
 
 let profileStore = new ProfileStore();
-// carStore.fetchAllCars();
 
 export default profileStore;
