@@ -53,7 +53,7 @@ class CarItem extends Component {
                 source={{ uri: car.image }}
                 style={styles.thumbnail}
               />
-              <Text style={styles.textlist}>{car.maker}</Text>
+              <Text style={styles.textlist}>{car.manufacturer}</Text>
               <Text note style={styles.textlist}>
                 {car.model}
               </Text>

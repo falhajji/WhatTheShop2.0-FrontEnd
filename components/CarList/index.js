@@ -5,7 +5,6 @@ import { observer } from "mobx-react";
 import { List, Content } from "native-base";
 
 // Store
-import carStore from "../../stores/carStore";
 import cars from "./data";
 
 // Style
@@ -13,6 +12,8 @@ import styles from "./styles";
 
 // Component
 import CarItem from "./CarItem";
+import carStore from "../../stores/carStore";
+
 import CartButton from "../Buttons/CartButton";
 import LogoutButton from "../Buttons/LogoutButton";
 
@@ -35,10 +36,12 @@ class CarList extends Component {
     headerLeft: <LogoutButton />
   });
   render() {
-    let shops = cars.map(car => <CarItem car={car} key={car.id} />);
+    // const cars = carStore.cars;
+    console.log(cars);
+    let carList = carStore.cars.map(car => <CarItem car={car} key={car.id} />);
     return (
       <Content>
-        <List style={styles.textlist}>{shops}</List>
+        <List style={styles.textlist}>{carList}</List>
       </Content>
     );
   }

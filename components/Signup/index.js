@@ -38,7 +38,7 @@ class Signup extends Component {
   });
   render() {
     const { navigation } = this.props;
-    if (authStore.user) navigation.replace("BottomTab");
+    if (authStore.user) navigation.replace("Profile");
     return (
       <Container>
         {/* <Header>Welcome to the Cool Carz App</Header> */}

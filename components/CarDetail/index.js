@@ -107,7 +107,11 @@ class CarDetail extends Component {
                 </Button>
               </Left>
               <Right>
-                <Button full danger onPress={() => this.handleAdd()}>
+                <Button
+                  full
+                  danger
+                  onPress={() => cartStore.addItemToCart(this.state)}
+                >
                   <Text>Add To Cart</Text>
                 </Button>
               </Right>

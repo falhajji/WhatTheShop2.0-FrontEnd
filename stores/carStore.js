@@ -1,17 +1,23 @@
 import { decorate, observable } from "mobx";
 import axios from "axios";
 
+const instance = axios.create({
+  baseURL: "http://192.168.100.186:80/products/"
+});
+
 class CarStore {
   cars = null;
+  car = null;
   loading = true;
 
   fetchAllCars = async () => {
     console.log("BEFORE");
     try {
-      let res = await axios.get("muffinbase.com/cars/list/");
+      let res = await instance.get("list/");
       console.log("AFTER AXIOS");
       let cars = res.data;
       this.cars = cars;
+      console.log(this.cars);
       this.loading = false;
     } catch (err) {
       console.log("ERRORRR");
@@ -26,6 +32,6 @@ decorate(CarStore, {
 });
 
 let carStore = new CarStore();
-// carStore.fetchAllCars();
+carStore.fetchAllCars();
 
 export default carStore;
