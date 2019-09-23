@@ -65,6 +65,7 @@ class CarDetail extends Component {
 
   render() {
     const car = this.props.navigation.getParam("shop", {});
+    console.log("CARS in DETAIL", car);
     return (
       <Container>
         <Header />

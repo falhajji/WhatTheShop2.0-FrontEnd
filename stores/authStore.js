@@ -28,14 +28,15 @@ class AuthStore {
     try {
       const res = await instance.post("login/", userData);
       const user = res.data;
-      this.setUser(user.access);
+      await this.setUser(user.access);
+      navigation.replace("Profile");
     } catch (err) {
       console.error(err);
     }
   };
 
-  logout = navigation => {
-    this.setUser();
+  logout = async navigation => {
+    await this.setUser();
     navigation.replace("Login");
   };
 
