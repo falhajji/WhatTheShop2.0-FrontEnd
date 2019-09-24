@@ -1,5 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
+import { instance } from "./instance";
 
 class ProfileStore {
   profile = null;
@@ -7,7 +7,7 @@ class ProfileStore {
 
   fetchProfile = async () => {
     try {
-      let res = await axios.get("http://192.168.100.186:80/accounts/");
+      let res = await instance.get("");
       // let res = await axios.get("http://localhost:80/accounts/");
       console.log("AFTER AXIOS");
 

@@ -1,9 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://localhost:80/products/"
-});
+import { instance } from "./instance";
 
 class CarStore {
   cars = null;
