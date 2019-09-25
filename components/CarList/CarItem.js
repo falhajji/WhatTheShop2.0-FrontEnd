@@ -21,17 +21,6 @@ import { withNavigation } from "react-navigation";
 import cartStore from "../../stores/cartStore";
 
 class CarItem extends Component {
-  state = {
-    manufacturer: this.props.navigation.getParam("car", {}).manufacturer,
-    model: this.props.navigation.getParam("car", {}).model,
-    color: this.props.navigation.getParam("car", {}).color,
-    gear: this.props.navigation.getParam("car", {}).gear,
-    year: this.props.navigation.getParam("car", {}).year,
-    milage: this.props.navigation.getParam("car", {}).milage,
-    price: this.props.navigation.getParam("car", {}).price,
-    image: this.props.navigation.getParam("car", {}).image,
-    quantity: 1
-  };
   handlePress = () => {
     this.props.navigation.navigate("CarDetail", {
       car: this.props.car

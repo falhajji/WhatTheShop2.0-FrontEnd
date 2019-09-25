@@ -12,20 +12,21 @@ import CartItem from "./CartItem";
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
+//THIS IS THE CARCART.. EDIT ME TO CHECKOUT
+
 class CarCart extends Component {
   componentDidMount = () => {
-    if (authStore.user) {
-      cartStore.fetchCart();
+    if (authStore.user && cartStore.loading === false) {
+      cartStore.checkoutCart();
     }
   };
 
   render() {
     const items = cartStore.cart;
     let cartItems;
-    if (cartStore.loading) {
-      return <Spinner />;
+    if (!cartStore.loading) {
+      cartItems = items.map(item => <CartItem item={cart} key={item.id} />);
     }
-    cartItems = items.map(item => <CartItem item={cart} key={item.id} />);
 
     return (
       <List>
