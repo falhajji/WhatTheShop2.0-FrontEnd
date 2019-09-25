@@ -9,7 +9,7 @@ class CarStore {
   fetchAllCars = async () => {
     console.log("BEFORE");
     try {
-      let res = await instance.get("list/");
+      let res = await instance.get("products/list/");
       console.log("AFTER AXIOS");
       let cars = res.data;
       this.cars = cars;
