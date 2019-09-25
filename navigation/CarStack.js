@@ -5,6 +5,7 @@ import CarDetail from "../components/CarDetail";
 import CarList from "../components/CarList";
 import CarCart from "../components/CarCart";
 import Login from "../components/Login";
+import SignupScreen from "../components/Signup";
 import ProfileScreen from "../components/Profile";
 
 const CarStack = createStackNavigator(
@@ -13,7 +14,8 @@ const CarStack = createStackNavigator(
     CarDetail: CarDetail,
     CarCart: CarCart,
     Login: Login,
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
+    Signup: SignupScreen
   },
   {
     initialRouteName: "Carlist",
