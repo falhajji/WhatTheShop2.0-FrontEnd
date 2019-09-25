@@ -1,9 +1,6 @@
 import { decorate, observable, action, computed } from "mobx";
 import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://localhost:80/cart/"
-});
+import { instance } from "./instance";
 
 class CartStore {
   items = [];

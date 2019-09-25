@@ -1,9 +1,5 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: "http://localhost:80/products/"
-});
+import { instance } from "./instance";
 
 class CarStore {
   cars = null;
@@ -13,7 +9,7 @@ class CarStore {
   fetchAllCars = async () => {
     console.log("BEFORE");
     try {
-      let res = await instance.get("list/");
+      let res = await instance.get("products/list/");
       console.log("AFTER AXIOS");
       let cars = res.data;
       this.cars = cars;

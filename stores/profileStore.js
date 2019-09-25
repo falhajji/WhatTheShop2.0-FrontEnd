@@ -1,30 +1,40 @@
-import { decorate, observable } from "mobx";
-import axios from "axios";
+// import { decorate, observable } from "mobx";
+// import { instance } from "./instance";
+// import axios from "axios";
 
-class ProfileStore {
-  profile = null;
-  loading = true;
+// class ProfileStore {
+//   profile = null;
+//   loading = true;
 
-  fetchProfile = async () => {
-    try {
-      // let res = await axios.get("http://192.168.100.186:80/accounts/");
-      let res = await axios.get("http://localhost:80/accounts/");
-      console.log("AFTER AXIOS");
+//   fetchProfile = async () => {
+//     try {
+//       let res = await instance.get("");
+//       // let res = await axios.get("http://localhost:80/accounts/");
 
-      this.profile = res.data;
-      this.loading = false;
-    } catch (err) {
-      console.log("ERRORRR");
-      console.error(err);
-    }
-  };
-}
 
-decorate(ProfileStore, {
-  profile: observable,
-  loading: observable
-});
+//       console.log(
+//         "axios deaults header",
+//         axios.defaults.headers.common.Authorization
+//       );
 
-let profileStore = new ProfileStore();
+//       this.profile = res.data;
+//       this.loading = false;
+//     } catch (err) {
+//       console.log("ERRORRR");
+//       console.error(err);
+//       console.log(
+//         "axios deaults header",
+//         axios.defaults.headers.common.Authorization
+//       );
+//     }
+//   };
+// }
 
-export default profileStore;
+// decorate(ProfileStore, {
+//   profile: observable,
+//   loading: observable
+// });
+
+// let profileStore = new ProfileStore();
+
+// export default profileStore;
