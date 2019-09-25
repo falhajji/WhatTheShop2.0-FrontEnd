@@ -37,7 +37,7 @@ class CarList extends Component {
   });
   render() {
     // const cars = carStore.cars;
-    console.log(cars);
+    // console.log(cars);
     let carList = carStore.cars.map(car => <CarItem car={car} key={car.id} />);
     return (
       <Content>

@@ -4,7 +4,7 @@ import { instance } from "./instance";
 
 class CartStore {
   items = [];
-  cart = null;
+  cart = [];
   loading = true;
 
   addItemToCart = item => {
@@ -23,8 +23,15 @@ class CartStore {
   removeItemFromCart = itemToDelete =>
     (this.items = this.items.filter(cartItem => cartItem !== itemToDelete));
 
-  checkoutCart = () => {
-    this.items = [];
+  checkoutCart = async () => {
+    try {
+      const res = await instance.get("checkout/");
+      this.cart = res.data;
+      this.loading = false;
+      navigation.replace("Checkout");
+    } catch (err) {
+      console.error(err);
+    }
   };
   get quantity() {
     let quantity = 0;
@@ -37,6 +44,7 @@ class CartStore {
       const res = await instance.get();
       this.cart = res.data;
       this.loading = false;
+      console.log("fetchCart in cartstore", this.cart);
     } catch (err) {
       console.error(err);
     }

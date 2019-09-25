@@ -11,6 +11,7 @@
 //       let res = await instance.get("");
 //       // let res = await axios.get("http://localhost:80/accounts/");
 
+
 //       console.log(
 //         "axios deaults header",
 //         axios.defaults.headers.common.Authorization
