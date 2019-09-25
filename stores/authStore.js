@@ -1,12 +1,9 @@
 import { decorate, observable } from "mobx";
-import axios from "axios";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
+import { instance } from "./instance";
+import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "http://192.168.100.186:80/accounts/"
-  // baseURL: "http://localhost:80/accounts/"
-});
 class AuthStore {
   user = null;
 
@@ -15,19 +12,19 @@ class AuthStore {
       // Save token to localStorage
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
-      axios.defaults.headers.common.Authorization = `JWT ${token}`;
+      instance.defaults.headers.common.Authorization = `JWT ${token}`;
       // Set current user
       this.user = jwt_decode(token);
     } else {
       await AsyncStorage.removeItem("myToken");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       this.user = null;
     }
   };
 
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("login/", userData);
+      const res = await instance.post("accounts/login/", userData);
       const user = res.data;
       await this.setUser(user.token);
       navigation.replace("Profile");
@@ -43,8 +40,7 @@ class AuthStore {
 
   signup = async (userData, navigation) => {
     try {
-      console.log(userData);
-      const res = await instance.post("register/", userData);
+      const res = await instance.post("accounts/register/", userData);
       console.log(res);
 
       const data = res.data;
