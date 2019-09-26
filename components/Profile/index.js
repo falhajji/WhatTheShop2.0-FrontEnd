@@ -10,6 +10,7 @@ class Profile extends Component {
   componentDidMount = () => {
     // if (authStore.user) profileStore.fetchProfile();
     console.log("[Profile.js]: ", authStore.user);
+    cartStore.fetchCart();
   };
   render() {
     if (!authStore.user) return <Spinner />;

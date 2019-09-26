@@ -1,33 +1,36 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
+import {
+  Text,
+  Left,
+  Body,
+  Right,
+  Button,
+  ListItem,
+  Icon,
+  Thumbnail
+} from "native-base";
+import styles from "../CarList/styles";
 import cartStore from "../../stores/cartStore";
 
 class CartItem extends Component {
   render() {
-    const { item } = this.props;
+    const item = this.props.item;
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
-          <Text style={{ color: "black", marginLeft: 16 }}>
-            {" "}
-            {cartStore.cart.product}{" "}
-          </Text>
+          <Thumbnail
+            bordered
+            source={{ uri: item.image }}
+            style={styles.thumbnail}
+          />
+          <Text style={{ color: "black", marginLeft: 16 }}></Text>
           <Text note style={{ marginLeft: 16 }}>
-            {cartStore.cart.unit_price}
+            {item.price}
           </Text>
         </Left>
-        <Body>
-          <Text style={{ color: "black" }}>
-            Quantity : {cartStore.cart.quantity}
-          </Text>
-        </Body>
-        <Body>
-          <Text style={{ color: "black" }}>
-            Quantity : {cartStore.cart.sub_total}
-          </Text>
-        </Body>
+        <Body></Body>
         <Right>
           <Button
             transparent
