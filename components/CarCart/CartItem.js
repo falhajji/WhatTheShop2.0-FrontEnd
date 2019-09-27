@@ -11,32 +11,35 @@ import {
   Icon,
   Thumbnail
 } from "native-base";
-import styles from "../CarList/styles";
 import cartStore from "../../stores/cartStore";
 
 class CartItem extends Component {
+  handlePress = item => {
+    this.props.navigation.navigate("CarDetail", {
+      item: item
+    });
+  };
   render() {
     const item = this.props.item;
     return (
-      <ListItem style={{ borderBottomWidth: 0 }}>
+      <ListItem thumbnail>
         <Left>
-          <Thumbnail
-            bordered
-            source={{ uri: item.image }}
-            style={styles.thumbnail}
-          />
-          <Text style={{ color: "black", marginLeft: 16 }}></Text>
-          <Text note style={{ marginLeft: 16 }}>
-            {item.price}
-          </Text>
+          <Thumbnail square source={{ uri: item.image }} />
         </Left>
-        <Body></Body>
+        <Body>
+          <Text>
+            {item.manufacturer} {item.model} {item.year}
+          </Text>
+          <Text note style={{ color: "black" }} numberOfLines={1}>
+            KD {item.price}
+          </Text>
+        </Body>
         <Right>
           <Button
             transparent
             onPress={() => cartStore.removeItemFromCart(item)}
           >
-            <Icon name="trash" style={{ color: "blue", fontSize: 21 }} />
+            <Text style={{ color: "red" }}>Remove</Text>
           </Button>
         </Right>
       </ListItem>

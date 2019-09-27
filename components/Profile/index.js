@@ -4,23 +4,22 @@ import { observer } from "mobx-react";
 // NativeBase Components
 import { Card, CardItem, Text, Button, Header, Spinner } from "native-base";
 import authStore from "../../stores/authStore";
-// import profileStore from "../../stores/profileStore";
+import profileStore from "../../stores/profileStore";
 
 class Profile extends Component {
-  componentDidMount = () => {
-    // if (authStore.user) profileStore.fetchProfile();
-    console.log("[Profile.js]: ", authStore.user);
-    cartStore.fetchCart();
-  };
+  componentDidMount() {
+    if (authStore.user) {
+      profileStore.fetchProfile();
+    }
+  }
   render() {
-    if (!authStore.user) return <Spinner />;
-    if (authStore.loading) return <Spinner />;
+    // if (profileStore.loading) {
+    //   return <Spinner />;
+    // }
     return (
       <Card>
         <CardItem>
-          <Text>
-            Welcome {authStore.user.username}!{"\n"}
-          </Text>
+          <Text>Welcome!{profileStore.profile.first_name}</Text>
         </CardItem>
         <CardItem>
           <Button

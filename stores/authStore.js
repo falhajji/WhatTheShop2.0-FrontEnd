@@ -2,7 +2,6 @@ import { decorate, observable } from "mobx";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
-import axios from "axios";
 
 class AuthStore {
   user = null;
@@ -29,7 +28,7 @@ class AuthStore {
       await this.setUser(user.token);
       navigation.replace("Profile");
     } catch (err) {
-      console.error(err);
+      console.error(err.stack);
     }
   };
 
@@ -48,7 +47,7 @@ class AuthStore {
       await this.setUser(data.token);
       navigation.replace("Profile");
     } catch (err) {
-      console.error(err);
+      console.error(err.stack);
     }
   };
 

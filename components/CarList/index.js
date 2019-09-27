@@ -14,10 +14,14 @@ class CarList extends Component {
     headerRight: <CartButton />,
     headerLeft: <LogoutButton />
   });
+
   render() {
     let carList = carStore.cars.map(item => (
       <CarItem item={item} key={item.id} />
     ));
+    if (carStore.loading) {
+      return <Spinner />;
+    }
     return (
       <Content>
         <List style={styles.textlist}>{carList}</List>

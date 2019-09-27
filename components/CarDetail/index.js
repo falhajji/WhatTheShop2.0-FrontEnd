@@ -9,12 +9,8 @@ import {
   Left,
   Body,
   Right,
-  List,
-  ListItem,
-  Picker,
   Card,
   Container,
-  Header,
   Content,
   CardItem,
   Icon
@@ -29,10 +25,29 @@ import cartStore from "../../stores/cartStore";
 import CartButton from "../Buttons/CartButton";
 
 // Components
-
 class CarDetail extends Component {
   render() {
     const item = this.props.navigation.getParam("item");
+    addremovebutton = () => {
+      if (!cartStore.items.find(cartItem => cartItem.id === item.id)) {
+        return (
+          <Button full danger onPress={() => cartStore.addItemToCart(item)}>
+            <Text>Add To Cart</Text>
+          </Button>
+        );
+      } else {
+        return (
+          <Button
+            full
+            danger
+            onPress={() => cartStore.removeItemFromCart(item)}
+          >
+            <Text>Remove from Cart</Text>
+          </Button>
+        );
+      }
+    };
+
     return (
       <Container>
         <Content>
@@ -46,7 +61,7 @@ class CarDetail extends Component {
                     {"\n"}
                     {item.model}
                   </Text>
-                  <Text note>April 15, 2016</Text>
+                  <Text note>{item.create_date}</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -76,15 +91,7 @@ class CarDetail extends Component {
                   <Text>1,926 stars</Text>
                 </Button>
               </Left>
-              <Right>
-                <Button
-                  full
-                  danger
-                  onPress={() => cartStore.addItemToCart(item)}
-                >
-                  <Text>Add To Cart</Text>
-                </Button>
-              </Right>
+              <Right>{addremovebutton()}</Right>
             </CardItem>
           </Card>
         </Content>

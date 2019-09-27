@@ -1,36 +1,23 @@
+//Store
+
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-
-// NativeBase Components
 import { Text, List, Button, Spinner, ListItem } from "native-base";
 import { withNavigation } from "react-navigation";
-
-// Component
 import CartItem from "./CartItem";
-
-//Store
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
 class CarCart extends Component {
-  componentDidMount = () => {
-    if (authStore.user) {
-      cartStore.fetchCart();
-    }
-  };
-
   render() {
-    const items = cartStore.cart;
-    let cartItems;
-    if (cartStore.loading) {
-      return <Spinner />;
-    }
-    cartItems = items.map(item => <CartItem item={cart} key={item.id} />);
+    const cartItems = cartStore.items.map(item => (
+      <CartItem item={item} key={item.id} />
+    ));
 
     return (
       <List>
         {cartItems}
-        <Button full danger onPress={() => cartStore.checkoutCart()}>
+        <Button full danger onPress={() => this.handleCheckout()}>
           <Text>Checkout</Text>
         </Button>
       </List>
