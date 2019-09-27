@@ -14,6 +14,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `JWT ${token}`;
       // Set current user
       this.user = jwt_decode(token);
+      console.log("TOOKEKKN", this.user);
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
