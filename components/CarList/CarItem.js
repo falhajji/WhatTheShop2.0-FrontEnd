@@ -1,72 +1,45 @@
 import React, { Component } from "react";
-import { ImageBackground, View } from "react-native";
-
-// NativeBase Components
 import {
   ListItem,
   Card,
   CardItem,
   Thumbnail,
+  Body,
   Button,
   Text,
   Left,
   Right
 } from "native-base";
-
-// Style
 import styles from "./styles";
-
-// Navigation
 import { withNavigation } from "react-navigation";
-import cartStore from "../../stores/cartStore";
 
 class CarItem extends Component {
-  state = {
-    manufacturer: this.props.navigation.getParam("car", {}).manufacturer,
-    model: this.props.navigation.getParam("car", {}).model,
-    color: this.props.navigation.getParam("car", {}).color,
-    gear: this.props.navigation.getParam("car", {}).gear,
-    year: this.props.navigation.getParam("car", {}).year,
-    milage: this.props.navigation.getParam("car", {}).milage,
-    price: this.props.navigation.getParam("car", {}).price,
-    image: this.props.navigation.getParam("car", {}).image,
-    quantity: 1
-  };
-  handlePress = () => {
+  handlePress = item => {
     this.props.navigation.navigate("CarDetail", {
-      car: this.props.car
+      item: item
     });
-  };
-  handleAdd = () => {
-    cartStore.addItemToCart(this.state);
   };
 
   render() {
-    const { car } = this.props;
+    const item = this.props.item;
     return (
-      <ListItem button onPress={this.handlePress} style={styles.listitem}>
-        <Card style={styles.transparent}>
-          <CardItem style={styles.transparent}>
-            <Left>
-              <Thumbnail
-                bordered
-                source={{ uri: car.image }}
-                style={styles.thumbnail}
-              />
-              <Text style={styles.textlist}>{car.manufacturer}</Text>
-              <Text note style={styles.textlist}>
-                {car.model}
-              </Text>
-              <Text style={styles.textlist}>{car.color}</Text>
-              <Text style={styles.textlist}>{car.year}</Text>
-            </Left>
-            <Right>
-              {/* <Button small transparent onPress={() => this.handleAdd()}>
-                <Text>Add To Cart</Text>
-              </Button> */}
-            </Right>
-          </CardItem>
-        </Card>
+      <ListItem thumbnail>
+        <Left>
+          <Thumbnail square source={{ uri: item.image }} />
+        </Left>
+        <Body>
+          <Text>
+            {item.manufacturer} {item.model} {item.year}
+          </Text>
+          <Text note numberOfLines={1}>
+            {item.description}
+          </Text>
+        </Body>
+        <Right>
+          <Button transparent onPress={() => this.handlePress(item)}>
+            <Text>View</Text>
+          </Button>
+        </Right>
       </ListItem>
     );
   }

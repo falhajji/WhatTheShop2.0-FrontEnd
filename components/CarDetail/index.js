@@ -9,12 +9,8 @@ import {
   Left,
   Body,
   Right,
-  List,
-  ListItem,
-  Picker,
   Card,
   Container,
-  Header,
   Content,
   CardItem,
   Icon
@@ -30,84 +26,83 @@ import CartButton from "../Buttons/CartButton";
 // import { throws } from "assert";
 
 // Components
-
 class CarDetail extends Component {
+
   state = {
-    manufacturer: this.props.navigation.getParam("car", {}).manufacturer,
-    model: this.props.navigation.getParam("car", {}).model,
-    color: this.props.navigation.getParam("car", {}).color,
-    gear: this.props.navigation.getParam("car", {}).gear,
-    year: this.props.navigation.getParam("car", {}).year,
-    milage: this.props.navigation.getParam("car", {}).milage,
-    description: this.props.navigation.getParam("car", {}).description,
-    seats: this.props.navigation.getParam("car", {}).seats,
-    price: this.props.navigation.getParam("car", {}).price,
-    image: this.props.navigation.getParam("car", {}).image,
+    //description: this.props.navigation.getParam("car", {}).description,
     likes: 0,
     quantity: 1
-  };
-
-  changeDrink = value => {
-    this.setState({
-      drink: value
-    });
-  };
-
-  changeOption = value => {
-    this.setState({
-      option: value
-    });
-  };
-
-  handleAdd = () => {
-    cartStore.addItemToCart(this.state);
   };
 
   likeMe = () => {
     this.setState(likes++);
   };
-
   render() {
-    const car = this.props.navigation.getParam("car", {});
-    console.log("[CarDetail.js] car: ", car);
+    const item = this.props.navigation.getParam("item");
+    addremovebutton = () => {
+      if (!cartStore.items.find(cartItem => cartItem.id === item.id)) {
+        return (
+          <Button full danger onPress={() => cartStore.addItemToCart(item)}>
+            <Text>Add To Cart</Text>
+          </Button>
+        );
+      } else {
+        return (
+          <Button
+            full
+            danger
+            onPress={() => cartStore.removeItemFromCart(item)}
+          >
+            <Text>Remove from Cart</Text>
+          </Button>
+        );
+      }
+    };
+
     return (
       <Container>
         <Content>
           <Card style={{ flex: 0 }}>
             <CardItem>
               <Left>
-                <Thumbnail source={{ uri: car.image }} />
+                <Thumbnail source={{ uri: item.image }} />
                 <Body>
                   <Text style={styles.text}>
-                    {car.manufacturer}
+                    {item.manufacturer}
                     {"\n"}
-                    {car.model}
+                    {item.model}
                   </Text>
-                  <Text note>April 15, 2016</Text>
+                  <Text note>{item.create_date}</Text>
                 </Body>
               </Left>
             </CardItem>
             <CardItem>
               <Body>
                 <Image
-                  source={{ uri: car.image }}
+                  source={{ uri: item.image }}
                   style={{ height: 250, width: 400, flex: 1 }}
                 />
+
+                <Text>
+                  {"\n"}This {item.year} {item.manufacturer} {item.model} comes
+                  with a milage of {item.milage}.
                 {/* <Text>
                   {"\n"}This {car.year} {car.maker} {car.model} comes with a
                   milage of {car.milage}.
                 </Text> */}
-                <Text style={styles.textlist}>
-                  Description: {"\n"} {car.description}
+              //  <Text style={styles.textlist}>
+                //  Description: {"\n"} {car.description}
                 </Text>
                 <Text style={styles.textlist}>
-                  {"\n"}Color: {car.color}
+                  {"\n"}Color: {item.color}
                 </Text>
-                <Text style={styles.textlist}>Gear: {car.gear}</Text>
+
+                <Text style={styles.textlist}>Gear: {item.gear}</Text>
+               // <Text style={styles.textlist}>Gear: {car.gear}</Text>
                 <Text style={styles.textlist}>Milage: {car.milage}</Text>
                 <Text style={styles.textlist}>Seats: {car.seats}</Text>
                 <Text style={styles.textlist}>
-                  Price: KD {car.price + "\n"}
+                  Price: KD {item.price + "\n"}
                 </Text>
               </Body>
             </CardItem>
@@ -118,15 +113,7 @@ class CarDetail extends Component {
                   <Text>Likes : {this.state.likes}</Text>
                 </Button>
               </Left>
-              <Right>
-                <Button
-                  full
-                  danger
-                  onPress={() => cartStore.addItemToCart(this.state)}
-                >
-                  <Text>Add To Cart</Text>
-                </Button>
-              </Right>
+              <Right>{addremovebutton()}</Right>
             </CardItem>
           </Card>
         </Content>

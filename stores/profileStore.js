@@ -1,39 +1,27 @@
-// import { decorate, observable } from "mobx";
-// import { instance } from "./instance";
-// import axios from "axios";
+import { decorate, observable } from "mobx";
+import { instance } from "./instance";
+import authStore from "../stores/authStore";
+class ProfileStore {
+  profile = "";
+  loading = true;
 
-// class ProfileStore {
-//   profile = null;
-//   loading = true;
+  fetchProfile = async () => {
+    try {
+      let res = await instance.get("accounts/");
+      instance("fetchProfile", res.data);
+      this.profile = res.data;
+      this.loading = false;
+    } catch (err) {
+      console.error(err.stack);
+    }
+  };
+}
 
-//   fetchProfile = async () => {
-//     try {
-//       let res = await instance.get("");
-//       // let res = await axios.get("http://localhost:80/accounts/");
+decorate(ProfileStore, {
+  profile: observable,
+  loading: observable
+});
 
-//       console.log(
-//         "axios deaults header",
-//         axios.defaults.headers.common.Authorization
-//       );
+let profileStore = new ProfileStore();
 
-//       this.profile = res.data;
-//       this.loading = false;
-//     } catch (err) {
-//       console.log("ERRORRR");
-//       console.error(err);
-//       console.log(
-//         "axios deaults header",
-//         axios.defaults.headers.common.Authorization
-//       );
-//     }
-//   };
-// }
-
-// decorate(ProfileStore, {
-//   profile: observable,
-//   loading: observable
-// });
-
-// let profileStore = new ProfileStore();
-
-// export default profileStore;
+export default profileStore;

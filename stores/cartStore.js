@@ -1,54 +1,78 @@
 import { decorate, observable, action, computed } from "mobx";
-import axios from "axios";
 import { instance } from "./instance";
 
 class CartStore {
   items = [];
-  cart = null;
   loading = true;
 
-  addItemToCart = item => {
-    // console.log("Cart Store add item to cart", item);
-    const foundItem = this.items.find(
-      cartItem => cartItem.model == item.model && cartItem.year == item.year
-    );
-    if (foundItem) {
-      foundItem.quantity++;
-    } else {
-      this.items.push(item);
+  addItemToCart = async item => {
+    const exists = this.items.find(cartItem => cartItem.id === item.id);
+    if (!exists) {
+      try {
+        const res = await instance.post("cart/", {
+          product: item.id
+        });
+        this.items.push(item);
+        this.loading = false;
+      } catch (err) {
+        console.error(err.response.data);
+      }
     }
-    console.log(this.items);
   };
-
-  removeItemFromCart = itemToDelete =>
-    (this.items = this.items.filter(cartItem => cartItem !== itemToDelete));
-
-  checkoutCart = () => {
-    this.items = [];
-  };
-  get quantity() {
-    let quantity = 0;
-    this.items.forEach(item => (quantity = quantity + item.quantity));
-    return quantity;
-  }
-
-  fetchCart = async () => {
+  removeItemFromCart = async deletedItem => {
     try {
-      const res = await instance.get();
+      const res = await instance.delete("cart/", {
+        data: {
+          product: deletedItem.id
+        }
+      });
+      this.items = this.items.filter(item => item.id !== deletedItem.id);
+    } catch (err) {
+      console.error(err.stack);
+    }
+  };
+
+  checkoutCart = async () => {
+    try {
+      const res = await instance.get("cart/checkout/");
       this.cart = res.data;
       this.loading = false;
+      this.items = [];
+      return true;
+      navigation.replace("Checkout");
     } catch (err) {
-      console.error(err);
+      console.error(err.stack);
     }
   };
 }
+
+checkoutCart = async () => {
+  try {
+    const res = await instance.get("checkout/");
+    this.cart = res.data;
+    this.loading = false;
+    navigation.replace("Checkout");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+fetchCart = async () => {
+  try {
+    const res = await instance.get();
+    let hello = res.data;
+    this.items = hello.cart_items;
+    this.loading = false;
+  } catch (err) {
+    console.error(err.stack);
+  }
+};
 
 decorate(CartStore, {
   items: observable,
   addItemToCart: action,
   removeItemFromCart: action,
   checkoutCart: action,
-  quantity: computed,
   loading: observable
 });
 

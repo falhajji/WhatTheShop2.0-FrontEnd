@@ -1,31 +1,37 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
+import {
+  Text,
+  Left,
+  Body,
+  Right,
+  Button,
+  ListItem,
+  Icon,
+  Thumbnail
+} from "native-base";
 import cartStore from "../../stores/cartStore";
 
 class CartItem extends Component {
+  handlePress = item => {
+    this.props.navigation.navigate("CarDetail", {
+      item: item
+    });
+  };
   render() {
-    const { item } = this.props;
+    const item = this.props.item;
     return (
-      <ListItem style={{ borderBottomWidth: 0 }}>
+      <ListItem thumbnail>
         <Left>
-          <Text style={{ color: "black", marginLeft: 16 }}>
-            {" "}
-            {cartStore.cart.product}{" "}
-          </Text>
-          <Text note style={{ marginLeft: 16 }}>
-            {cartStore.cart.unit_price}
-          </Text>
+          <Thumbnail square source={{ uri: item.image }} />
         </Left>
         <Body>
-          <Text style={{ color: "black" }}>
-            Quantity : {cartStore.cart.quantity}
+          <Text>
+            {item.manufacturer} {item.model} {item.year}
           </Text>
-        </Body>
-        <Body>
-          <Text style={{ color: "black" }}>
-            Quantity : {cartStore.cart.sub_total}
+          <Text note style={{ color: "black" }} numberOfLines={1}>
+            KD {item.price}
           </Text>
         </Body>
         <Right>
@@ -33,7 +39,7 @@ class CartItem extends Component {
             transparent
             onPress={() => cartStore.removeItemFromCart(item)}
           >
-            <Icon name="trash" style={{ color: "blue", fontSize: 21 }} />
+            <Text style={{ color: "red" }}>Remove</Text>
           </Button>
         </Right>
       </ListItem>
