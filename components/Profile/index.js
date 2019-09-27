@@ -4,6 +4,7 @@ import { observer } from "mobx-react";
 // NativeBase Components
 import { Card, CardItem, Text, Button, Header, Spinner } from "native-base";
 import authStore from "../../stores/authStore";
+import historyStore from "../../stores/historyStore";
 // import profileStore from "../../stores/profileStore";
 
 class Profile extends Component {
@@ -12,8 +13,10 @@ class Profile extends Component {
     console.log("[Profile.js]: ", authStore.user);
   };
   render() {
-    if (!authStore.user) return <Spinner />;
+    if (!authStore.user) this.props.navigation.replace("Signup");
+
     if (authStore.loading) return <Spinner />;
+
     return (
       <Card>
         <CardItem>
@@ -27,6 +30,18 @@ class Profile extends Component {
             onPress={() => authStore.logout(this.props.navigation)}
           >
             <Text>Logout</Text>
+          </Button>
+        </CardItem>
+        <CardItem>
+          <Button
+            danger
+            onPress={() =>
+              historyStore.fetchOrder(
+                this.props.navigation.replace("OrderHistory")
+              )
+            }
+          >
+            <Text>Order History</Text>
           </Button>
         </CardItem>
       </Card>

@@ -10,7 +10,8 @@ const ProfileStack = createStackNavigator(
     // Welcome: WelcomeScreen,
     Profile: ProfileScreen,
     Login: LoginScreen,
-    Signup: SignupScreen
+    Signup: SignupScreen,
+    OrderHistory: OrderHistory
   },
   {
     initialRouteName: "Profile",

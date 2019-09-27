@@ -27,6 +27,7 @@ import styles from "./styles";
 //Store
 import cartStore from "../../stores/cartStore";
 import CartButton from "../Buttons/CartButton";
+// import { throws } from "assert";
 
 // Components
 
@@ -38,8 +39,11 @@ class CarDetail extends Component {
     gear: this.props.navigation.getParam("car", {}).gear,
     year: this.props.navigation.getParam("car", {}).year,
     milage: this.props.navigation.getParam("car", {}).milage,
+    description: this.props.navigation.getParam("car", {}).description,
+    seats: this.props.navigation.getParam("car", {}).seats,
     price: this.props.navigation.getParam("car", {}).price,
     image: this.props.navigation.getParam("car", {}).image,
+    likes: 0,
     quantity: 1
   };
 
@@ -57,6 +61,10 @@ class CarDetail extends Component {
 
   handleAdd = () => {
     cartStore.addItemToCart(this.state);
+  };
+
+  likeMe = () => {
+    this.setState(likes++);
   };
 
   render() {
@@ -85,14 +93,18 @@ class CarDetail extends Component {
                   source={{ uri: car.image }}
                   style={{ height: 250, width: 400, flex: 1 }}
                 />
-                <Text>
+                {/* <Text>
                   {"\n"}This {car.year} {car.maker} {car.model} comes with a
                   milage of {car.milage}.
+                </Text> */}
+                <Text style={styles.textlist}>
+                  Description: {"\n"} {car.description}
                 </Text>
                 <Text style={styles.textlist}>
                   {"\n"}Color: {car.color}
                 </Text>
                 <Text style={styles.textlist}>Gear: {car.gear}</Text>
+                <Text style={styles.textlist}>Milage: {car.milage}</Text>
                 <Text style={styles.textlist}>Seats: {car.seats}</Text>
                 <Text style={styles.textlist}>
                   Price: KD {car.price + "\n"}
@@ -101,9 +113,9 @@ class CarDetail extends Component {
             </CardItem>
             <CardItem>
               <Left>
-                <Button transparent textStyle={{ color: "#87838B" }}>
+                <Button full danger onPress={() => this.likeMe}>
                   <Icon name="star" />
-                  <Text>1,926 stars</Text>
+                  <Text>Likes : {this.state.likes}</Text>
                 </Button>
               </Left>
               <Right>
