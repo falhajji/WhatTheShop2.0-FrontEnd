@@ -23,6 +23,7 @@ import styles from "./styles";
 //Store
 import cartStore from "../../stores/cartStore";
 import CartButton from "../Buttons/CartButton";
+import authStore from "../../stores/authStore";
 // import { throws } from "assert";
 
 // Components
@@ -38,23 +39,29 @@ class CarDetail extends Component {
   // };
   render() {
     const item = this.props.navigation.getParam("item");
+
     addremovebutton = () => {
-      if (!cartStore.items.find(cartItem => cartItem.id === item.id)) {
-        return (
-          <Button full danger onPress={() => cartStore.addItemToCart(item)}>
-            <Text>Add To Cart</Text>
-          </Button>
-        );
-      } else {
-        return (
-          <Button
-            full
-            danger
-            onPress={() => cartStore.removeItemFromCart(item)}
-          >
-            <Text>Remove from Cart</Text>
-          </Button>
-        );
+      if (authStore.user) {
+        if (
+          !cartStore.items.find(cartItem => cartItem.id === item.id) &&
+          authStore.user
+        ) {
+          return (
+            <Button full danger onPress={() => cartStore.addItemToCart(item)}>
+              <Text>Add To Cart</Text>
+            </Button>
+          );
+        } else {
+          return (
+            <Button
+              full
+              danger
+              onPress={() => cartStore.removeItemFromCart(item)}
+            >
+              <Text>Remove from Cart</Text>
+            </Button>
+          );
+        }
       }
     };
 
@@ -119,6 +126,7 @@ class CarDetail extends Component {
                   <Text>Likes : {this.state.likes}</Text>
                 </Button>
               </Left>
+
               <Right>{addremovebutton()}</Right>
             </CardItem>
           </Card>

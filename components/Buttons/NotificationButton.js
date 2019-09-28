@@ -15,7 +15,7 @@ class NotificationButton extends Component {
         onPress={() => this.props.navigation.navigate("CarCart")}
       >
         <Text style={{ color: "red", fontSize: 15 }}>
-          5
+          Items[{cartStore.items.length}]in cart
           <Icon
             type="FontAwesome"
             name="bell"

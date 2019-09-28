@@ -34,7 +34,7 @@ class AuthStore {
 
   logout = async navigation => {
     await this.setUser();
-    navigation.replace("Carlist");
+    navigation.replace("CarList");
   };
 
   signup = async (userData, navigation) => {
