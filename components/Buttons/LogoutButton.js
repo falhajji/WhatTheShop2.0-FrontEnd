@@ -9,14 +9,7 @@ import authStore from "../../stores/authStore";
 const LogoutButton = ({ navigation }) => {
   return (
     <Button transparent onPress={() => authStore.logout(navigation)}>
-      <Text>
-        {"Logout"}
-        <Icon
-          type="FontAwesome"
-          name="superpowers"
-          style={{ color: "white", fontSize: 15 }}
-        />
-      </Text>
+      <Text style={{ color: "black" }}> {"Logout"}</Text>
     </Button>
   );
 };
