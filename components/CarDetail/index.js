@@ -73,7 +73,7 @@ class CarDetail extends Component {
               <Left>
                 <Thumbnail source={{ uri: item.image }} />
                 <Body>
-                  <Text style={styles.text}>
+                  <Text style={styles.headline}>
                     {item.manufacturer}
                     {"\n"}
                     {item.model}
@@ -88,14 +88,20 @@ class CarDetail extends Component {
                   source={{ uri: item.image }}
                   style={{ height: 250, width: 400, flex: 1 }}
                 />
-                <Text style={styles.textlist}>
-                  Description: {"\n"}
-                  {item.description}
+
+                <Text style={styles.text}>
+                  Description
+                  <Icon name="info" type="MaterialIcons" color="#517fa4" />
                 </Text>
-                <Text style={styles.textlist}>
-                  {"\n"}Milage:{"\n"}
-                  {item.milage}
+                <Text style={styles.textlist}>{item.description}</Text>
+                <Text style={styles.text}>
+                  <Icon
+                    name="car-cruise-control"
+                    type="MaterialCommunityIcons"
+                  />
+                  Milage
                 </Text>
+                <Text style={styles.textlist}>{item.milage}</Text>
                 {/* <Text>
                   {"\n"}This {car.year} {car.maker} {car.model} comes with a
                   milage of {car.milage}.

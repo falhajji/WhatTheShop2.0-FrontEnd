@@ -8,9 +8,9 @@ import CarStack from "./CarStack";
 import Splash from "../components/Splash";
 const BottomTab = createBottomTabNavigator(
   {
-    ProfileTab: ProfileStack,
-    CarTab: CarStack,
-    Splash: { screen: Splash }
+    Profile: ProfileStack,
+    Cars: CarStack,
+    Home: { screen: Splash }
     // DetailTab: CarDetail
   },
   {
@@ -18,18 +18,21 @@ const BottomTab = createBottomTabNavigator(
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName, iconType;
-        if (routeName === "ProfileTab") {
+        if (routeName === "Profile") {
           iconName = "person";
           iconType = "MaterialIcons";
-        } else if (routeName === "CarTab") {
-          iconName = "menu";
+        } else if (routeName === "Cars") {
+          iconName = "car";
+        } else if (routeName === "Home") {
+          iconName = "home";
+          conType = "FontAwesome";
         }
         return (
           <Icon name={iconName} style={{ color: "white" }} type={iconType} />
         );
       }
     }),
-    initialRouteName: "Splash",
+    initialRouteName: "Home",
     tabBarOptions: {
       showLabel: true,
       activeTintColor: "white",
