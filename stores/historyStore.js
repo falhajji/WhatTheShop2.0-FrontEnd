@@ -2,7 +2,7 @@ import { decorate, observable, action, computed } from "mobx";
 import axios from "axios";
 import { instance } from "./instance";
 
-class HistoryStore {
+class historyStore {
   orders = [];
   order = null;
   t;
@@ -19,10 +19,10 @@ class HistoryStore {
   };
 }
 
-decorate(HistoryStore, {
+decorate(historyStore, {
   orders: observable,
   order: observable,
   loading: observable
 });
 
-export default new HistoryStore();
+export default new historyStore();

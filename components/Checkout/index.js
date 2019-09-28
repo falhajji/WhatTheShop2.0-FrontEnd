@@ -6,7 +6,7 @@ import { Text, List, Button, Spinner, ListItem } from "native-base";
 import { withNavigation } from "react-navigation";
 
 // Component
-import CartItem from "./CartItem";
+import CartItem from "../CarCart/CartItem";
 
 //Store
 import cartStore from "../../stores/cartStore";
@@ -14,7 +14,7 @@ import authStore from "../../stores/authStore";
 
 //THIS IS THE CARCART.. EDIT ME TO CHECKOUT
 
-class CarCart extends Component {
+class Checkout extends Component {
   componentDidMount = () => {
     if (authStore.user && cartStore.loading === false) {
       cartStore.checkoutCart();
@@ -39,4 +39,4 @@ class CarCart extends Component {
   }
 }
 
-export default withNavigation(observer(CarCart));
+export default withNavigation(observer(Checkout));

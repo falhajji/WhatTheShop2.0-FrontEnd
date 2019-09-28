@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import { List, Content } from "native-base";
+import { List, Content, Icon } from "native-base";
 import styles from "./styles";
 import CarItem from "./CarItem";
 import carStore from "../../stores/carStore";
@@ -9,8 +9,7 @@ import LogoutButton from "../Buttons/LogoutButton";
 
 class CarList extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Car List",
-    headerLeft: null,
+    title: "                    Car List",
     headerRight: <CartButton />,
     headerLeft: <LogoutButton />
   });

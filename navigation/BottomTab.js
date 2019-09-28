@@ -5,13 +5,11 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 // Navigators
 import ProfileStack from "./ProfileStack";
 import CarStack from "./CarStack";
-import CarDetail from "../components/CarDetail";
 
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
     CarTab: CarStack
-    // DetailTab: CarDetail
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

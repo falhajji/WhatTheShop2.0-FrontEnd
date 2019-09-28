@@ -22,7 +22,6 @@ class OrderHistory extends Component {
   render() {
     const orders = historyStore.orders;
     let OrderItem;
-
     if (historyStore.loading) {
       return <Spinner />;
     }

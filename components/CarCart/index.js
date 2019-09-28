@@ -17,7 +17,7 @@ class CarCart extends Component {
     return (
       <List>
         {cartItems}
-        <Button full danger onPress={() => this.handleCheckout()}>
+        <Button full danger onPress={() => this.checkoutCart()}>
           <Text>Checkout</Text>
         </Button>
       </List>

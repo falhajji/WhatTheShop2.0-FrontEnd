@@ -44,30 +44,29 @@ class CartStore {
       console.error(err.stack);
     }
   };
+
+  checkoutCart = async () => {
+    try {
+      const res = await instance.get("cart/checkout/");
+      this.cart = res.data;
+      this.loading = false;
+      navigation.replace("Checkout");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchCart = async () => {
+    try {
+      const res = await instance.get();
+      let hello = res.data;
+      this.items = hello.cart_items;
+      this.loading = false;
+    } catch (err) {
+      console.error(err.stack);
+    }
+  };
 }
-
-checkoutCart = async () => {
-  try {
-    const res = await instance.get("checkout/");
-    this.cart = res.data;
-    this.loading = false;
-    navigation.replace("Checkout");
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-fetchCart = async () => {
-  try {
-    const res = await instance.get();
-    let hello = res.data;
-    this.items = hello.cart_items;
-    this.loading = false;
-  } catch (err) {
-    console.error(err.stack);
-  }
-};
-
 decorate(CartStore, {
   items: observable,
   addItemToCart: action,

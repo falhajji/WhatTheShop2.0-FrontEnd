@@ -13,7 +13,7 @@ class Profile extends Component {
     }
   }
   render() {
-    if (!authStore.user) this.props.navigation.replace("Signup");
+    if (!authStore.user) this.props.navigation.replace("Login");
 
     if (authStore.loading) return <Spinner />;
 
@@ -33,11 +33,7 @@ class Profile extends Component {
         <CardItem>
           <Button
             danger
-            onPress={() =>
-              historyStore.fetchOrder(
-                this.props.navigation.replace("OrderHistory")
-              )
-            }
+            onPress={() => this.props.navigation.replace("OrderHistory")}
           >
             <Text>Order History</Text>
           </Button>
