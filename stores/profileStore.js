@@ -9,7 +9,6 @@ class ProfileStore {
   fetchProfile = async () => {
     try {
       let res = await instance.get("accounts/");
-      instance("fetchProfile", res.data);
       this.profile = res.data;
       this.loading = false;
     } catch (err) {
