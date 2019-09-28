@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
@@ -9,10 +10,7 @@ class OrderItem extends Component {
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>
-          <Text style={{ color: "black", marginLeft: 16 }}>
-            {" "}
-            {order.product}{" "}
-          </Text>
+          <Text style={{ color: "black", marginLeft: 16 }}> {order.item} </Text>
           <Text note style={{ marginLeft: 16 }}>
             {order.unit_price}
           </Text>
@@ -31,4 +29,4 @@ class OrderItem extends Component {
   }
 }
 
-export default OrderItem;
+export default observer(OrderItem);

@@ -42,11 +42,16 @@ class Signup extends Component {
     return (
       <Container>
         {/* <Header>Welcome to the Cool Carz App</Header> */}
+        <Header />
         <Content>
           <Card>
+            <Title>Welcome to the Cool Carz App</Title>
             <CardItem>
               <Form>
-                <Text></Text>
+                <Text>
+                  {" "}
+                  Sign Up to start using this app and see some Cool Carz
+                </Text>
                 <Item>
                   <Input
                     placeholder="Email"

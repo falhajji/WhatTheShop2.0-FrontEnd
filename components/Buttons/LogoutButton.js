@@ -7,11 +7,13 @@ import { observer } from "mobx-react";
 import authStore from "../../stores/authStore";
 
 const LogoutButton = ({ navigation }) => {
-  return (
-    <Button transparent onPress={() => authStore.logout(navigation)}>
-      <Text style={{ color: "black" }}> {"Logout"}</Text>
-    </Button>
-  );
+  if (authStore.user) {
+    return (
+      <Button danger onPress={() => authStore.logout(navigation)}>
+        <Text>Logout</Text>
+      </Button>
+    );
+  }
 };
 
 export default withNavigation(observer(LogoutButton));

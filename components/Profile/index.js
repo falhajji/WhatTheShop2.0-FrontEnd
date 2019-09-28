@@ -44,7 +44,8 @@ class Profile extends Component {
     }
   }
   render() {
-    if (!authStore.user) this.props.navigation.replace("Signup");
+    if (!authStore.user) this.props.navigation.replace("Login");
+
     if (authStore.loading) return <Spinner />;
     const dataArray = [];
     profileStore.carts.forEach(cart =>
