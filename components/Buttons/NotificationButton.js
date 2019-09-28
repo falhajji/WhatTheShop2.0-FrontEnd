@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 // Stores
 import cartStore from "../../stores/cartStore";
 
-class CartButton extends Component {
+class NotificationButton extends Component {
   render() {
     return (
       <Button
@@ -14,12 +14,12 @@ class CartButton extends Component {
         transparent
         onPress={() => this.props.navigation.navigate("CarCart")}
       >
-        <Text style={{ color: "#0f0a3c", fontSize: 15 }}>
-          {cartStore.items.length}
+        <Text style={{ color: "red", fontSize: 15 }}>
+          5
           <Icon
             type="FontAwesome"
-            name="shopping-cart"
-            style={{ color: "#0f0a3c", fontSize: 15 }}
+            name="bell"
+            style={{ color: "red", fontSize: 15 }}
           />
         </Text>
       </Button>
@@ -27,4 +27,4 @@ class CartButton extends Component {
   }
 }
 
-export default withNavigation(observer(CartButton));
+export default withNavigation(observer(NotificationButton));

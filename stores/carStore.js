@@ -17,6 +17,9 @@ class CarStore {
   getCarById = id => {
     return this.cars.find(car => car.id == id);
   };
+  removeCar = deletedCar => {
+    this.cars = this.cars.filter(car => car.id !== deletedCar.id);
+  };
 }
 decorate(CarStore, {
   cars: observable,
@@ -24,6 +27,8 @@ decorate(CarStore, {
 });
 
 let carStore = new CarStore();
-carStore.fetchAllCars();
+if (!carStore.cars) {
+  carStore.fetchAllCars();
+}
 
 export default carStore;

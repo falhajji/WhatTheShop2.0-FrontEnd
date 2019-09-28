@@ -12,7 +12,7 @@ import {
 } from "native-base";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
-
+import { Image } from "react-native";
 class CarItem extends Component {
   handlePress = item => {
     this.props.navigation.navigate("CarDetail", {
@@ -37,7 +37,7 @@ class CarItem extends Component {
         </Body>
         <Right>
           <Button transparent onPress={() => this.handlePress(item)}>
-            <Text>View</Text>
+            <Text style={{ color: "#0f0a3c", fontSize: 15 }}>View</Text>
           </Button>
         </Right>
       </ListItem>

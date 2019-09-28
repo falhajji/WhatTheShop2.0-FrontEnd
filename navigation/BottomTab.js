@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 // Navigators
 import ProfileStack from "./ProfileStack";
 import CarStack from "./CarStack";
-import CarDetail from "../components/CarDetail";
-
+import Splash from "../components/Splash";
 const BottomTab = createBottomTabNavigator(
   {
     ProfileTab: ProfileStack,
-    CarTab: CarStack
+    CarTab: CarStack,
+    Splash: { screen: Splash }
     // DetailTab: CarDetail
   },
   {
@@ -24,21 +24,18 @@ const BottomTab = createBottomTabNavigator(
         } else if (routeName === "CarTab") {
           iconName = "menu";
         }
-        // } else if (routeName === "DetailTab") {
-        //   iconName = "smiley";
-        // }
-
         return (
-          <Icon name={iconName} style={{ color: tintColor }} type={iconType} />
+          <Icon name={iconName} style={{ color: "white" }} type={iconType} />
         );
       }
     }),
+    initialRouteName: "Splash",
     tabBarOptions: {
       showLabel: true,
-      activeTintColor: "#6200EE",
-      inactiveTintColor: "#858585",
+      activeTintColor: "white",
+      inactiveTintColor: "white",
       style: {
-        backgroundColor: "white"
+        backgroundColor: "#0f0a3c"
       },
       labelStyle: {
         fontSize: 12

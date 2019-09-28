@@ -27,7 +27,6 @@ import CartButton from "../Buttons/CartButton";
 
 // Components
 class CarDetail extends Component {
-
   state = {
     //description: this.props.navigation.getParam("car", {}).description,
     likes: 0,
@@ -60,64 +59,38 @@ class CarDetail extends Component {
     };
 
     return (
-      <Container>
-        <Content>
-          <Card style={{ flex: 0 }}>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{ uri: item.image }} />
-                <Body>
-                  <Text style={styles.text}>
-                    {item.manufacturer}
-                    {"\n"}
-                    {item.model}
-                  </Text>
-                  <Text note>{item.create_date}</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem>
-              <Body>
-                <Image
-                  source={{ uri: item.image }}
-                  style={{ height: 250, width: 400, flex: 1 }}
-                />
-
-                <Text>
-                  {"\n"}This {item.year} {item.manufacturer} {item.model} comes
-                  with a milage of {item.milage}.
-                {/* <Text>
-                  {"\n"}This {car.year} {car.maker} {car.model} comes with a
-                  milage of {car.milage}.
-                </Text> */}
-              //  <Text style={styles.textlist}>
-                //  Description: {"\n"} {car.description}
-                </Text>
-                <Text style={styles.textlist}>
-                  {"\n"}Color: {item.color}
-                </Text>
-
-                <Text style={styles.textlist}>Gear: {item.gear}</Text>
-               // <Text style={styles.textlist}>Gear: {car.gear}</Text>
-                <Text style={styles.textlist}>Milage: {car.milage}</Text>
-                <Text style={styles.textlist}>Seats: {car.seats}</Text>
-                <Text style={styles.textlist}>
-                  Price: KD {item.price + "\n"}
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button full danger onPress={() => this.likeMe}>
-                  <Icon name="star" />
-                  <Text>Likes : {this.state.likes}</Text>
-                </Button>
-              </Left>
-              <Right>{addremovebutton()}</Right>
-            </CardItem>
-          </Card>
-        </Content>
-      </Container>
+      <>
+        <Image
+          source={{ uri: item.image }}
+          style={{
+            height: 200,
+            width: "auto",
+            flex: 1,
+            marginBottom: 20
+          }}
+        />
+        <Container>
+          <Content padder>
+            <Left>
+              <Text style={{ textAlign: "right", alignSelf: "stretch" }}>
+                Description: {item.description}
+              </Text>
+              <Text style={styles.textlist}>Color: {item.color}</Text>
+              <Text style={styles.textlist}>Gear: {item.gear}</Text>
+              <Text style={styles.textlist}>Gear: {item.gear}</Text>
+              <Text style={styles.textlist}>Milage: {item.milage}</Text>
+              <Text style={styles.textlist}>Price: KD {item.price + "\n"}</Text>
+            </Left>
+            <Left>
+              <Button full danger onPress={() => this.likeMe}>
+                <Icon name="star" />
+                <Text>Likes : {this.state.likes}</Text>
+              </Button>
+            </Left>
+            <Right>{addremovebutton()}</Right>
+          </Content>
+        </Container>
+      </>
     );
   }
 }

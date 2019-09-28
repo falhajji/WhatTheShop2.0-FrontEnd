@@ -4,18 +4,15 @@ import { createStackNavigator } from "react-navigation-stack";
 import CarDetail from "../components/CarDetail";
 import CarList from "../components/CarList";
 import CarCart from "../components/CarCart";
-// import Login from "../components/Login";
-// import SignupScreen from "../components/Signup";
-// import ProfileScreen from "../components/Profile";
 
 const CarStack = createStackNavigator(
   {
-    Carlist: CarList,
+    CarList: CarList,
     CarDetail: CarDetail,
     CarCart: CarCart
   },
   {
-    initialRouteName: "Carlist",
+    initialRouteName: "CarList",
     defaultNavigationOptions: {
       title: "Car Shop"
     }

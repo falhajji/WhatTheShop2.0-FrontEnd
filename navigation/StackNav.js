@@ -1,26 +1,25 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 import Login from "../components/Login";
-import CarList from "../components/CarList";
 import BottomTab from "./BottomTab";
-import SignupScreen from "../components/Signup";
-
+import Signup from "../components/Signup";
+import Splash from "../components/Splash";
 const StackNav = createStackNavigator(
   {
+    Signup: Signup,
     BottomTab: BottomTab,
+    Profile: Profile,
     Login: Login,
-    Signup: SignupScreen
+    Signup: Signup,
+    Splash: Splash
   },
   {
-    initialRouteName: "BottomTab",
     defaultNavigationOptions: {
       headerTintColor: "white",
       headerStyle: {
         backgroundColor: "rgb(8,80,129)"
       },
-      headerTextStyle: {
-        fontWeight: "bold"
-      }
+      headerTextStyle: {}
     }
   }
 );

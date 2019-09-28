@@ -1,9 +1,10 @@
-import { decorate, observable } from "mobx";
+import { decorate, observable, action, computed } from "mobx";
 import { instance } from "./instance";
-import authStore from "../stores/authStore";
 class ProfileStore {
   profile = "";
   loading = true;
+  carts = [];
+  cart = "";
 
   fetchProfile = async () => {
     try {
@@ -15,9 +16,29 @@ class ProfileStore {
       console.error(err.stack);
     }
   };
+  addToHistory = cart => {
+    this.carts.push(cart);
+  };
+  fetchHistory = async () => {
+    try {
+      const res = await instance.get("cart/history/");
+      this.carts = res.data;
+      this.loading = false;
+    } catch (err) {
+      if (res.status === 404) {
+        carts = [];
+      } else {
+        console.error(err.status);
+      }
+    }
+  };
 }
-
 decorate(ProfileStore, {
+  fetchProfile: action,
+  fetchHistory: action,
+  addToHistory: action,
+  carts: observable,
+  cart: observable,
   profile: observable,
   loading: observable
 });

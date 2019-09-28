@@ -1,5 +1,7 @@
 import { decorate, observable, action, computed } from "mobx";
 import { instance } from "./instance";
+import profileStore from "../stores/profileStore";
+import carStore from "../stores/carStore";
 
 class CartStore {
   items = [];
@@ -28,46 +30,53 @@ class CartStore {
       });
       this.items = this.items.filter(item => item.id !== deletedItem.id);
     } catch (err) {
-      console.error(err.stack);
+      console.error(err.response.data);
     }
   };
 
+  //   checkoutCart = async () => {
+  //     try {
+  //       const res = await instance.get("cart/checkout/");
+  //       this.cart = res.data;
+  //       this.loading = false;
+  //       this.items = [];
+  //       return true;
+  //       navigation.replace("Checkout");
+  //     } catch (err) {
+  //       console.error(err.stack);
+  //     }
+  //   };
+
   checkoutCart = async () => {
+    if (this.items.length) {
+      try {
+        const res = await instance.get("cart/checkout/");
+        this.loading = false;
+        this.items.forEach(item => carStore.removeCar(item));
+        this.items = [];
+        profileStore.addToHistory(res.data);
+      } catch (err) {
+        console.error(err.response.data);
+      }
+    }
+  };
+  fetchCart = async () => {
     try {
-      const res = await instance.get("cart/checkout/");
-      this.cart = res.data;
+      const res = await instance.get("cart/");
+      this.item = [];
+      res.data.cart_items.forEach(cartItem =>
+        this.items.push(carStore.getCarById(cartItem.product))
+      );
       this.loading = false;
-      this.items = [];
-      return true;
-      navigation.replace("Checkout");
     } catch (err) {
-      console.error(err.stack);
+      if (res.status === 404) {
+        carts = [];
+      } else {
+        console.error(err.status);
+      }
     }
   };
 }
-
-checkoutCart = async () => {
-  try {
-    const res = await instance.get("checkout/");
-    this.cart = res.data;
-    this.loading = false;
-    navigation.replace("Checkout");
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-fetchCart = async () => {
-  try {
-    const res = await instance.get();
-    let hello = res.data;
-    this.items = hello.cart_items;
-    this.loading = false;
-  } catch (err) {
-    console.error(err.stack);
-  }
-};
-
 decorate(CartStore, {
   items: observable,
   addItemToCart: action,
