@@ -9,13 +9,12 @@ import { withNavigation } from "react-navigation";
 import OrderItem from "./OrderItem";
 
 //Store
-import historyStore from "../../stores/historyStore";
 import authStore from "../../stores/authStore";
 
 class OrderHistory extends Component {
   componentDidMount = () => {
     if (authStore.user) {
-      historyStore.fetchOrder();
+      profileStore.fetchHistory();
     }
   };
 

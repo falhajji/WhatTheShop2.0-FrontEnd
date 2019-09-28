@@ -14,7 +14,6 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `JWT ${token}`;
       // Set current user
       this.user = jwt_decode(token);
-      console.log("TOOKEKKN", this.user);
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
@@ -41,10 +40,9 @@ class AuthStore {
   signup = async (userData, navigation) => {
     try {
       const res = await instance.post("accounts/register/", userData);
-      console.log(res);
 
       const data = res.data;
-      console.log(data);
+
       await this.setUser(data.token);
       navigation.replace("Profile");
     } catch (err) {

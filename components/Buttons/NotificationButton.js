@@ -2,24 +2,24 @@ import React, { Component } from "react";
 import { withNavigation } from "react-navigation";
 import { Button, Text, Icon } from "native-base";
 import { observer } from "mobx-react";
-import Styles from "./styles";
 
 // Stores
 import cartStore from "../../stores/cartStore";
 
-class CartButton extends Component {
+class NotificationButton extends Component {
   render() {
     return (
       <Button
+        light
         transparent
         onPress={() => this.props.navigation.navigate("CarCart")}
       >
-        <Text style={Styles.text}>
-          {cartStore.items.length}
+        <Text style={{ color: "red", fontSize: 15 }}>
+          5
           <Icon
             type="FontAwesome"
-            name="shopping-cart"
-            style={{ color: "#0f0a3c", fontSize: 15 }}
+            name="bell"
+            style={{ color: "red", fontSize: 15 }}
           />
         </Text>
       </Button>
@@ -27,4 +27,4 @@ class CartButton extends Component {
   }
 }
 
-export default withNavigation(observer(CartButton));
+export default withNavigation(observer(NotificationButton));

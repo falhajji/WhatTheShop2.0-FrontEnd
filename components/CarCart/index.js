@@ -9,6 +9,11 @@ import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
 class CarCart extends Component {
+  handlePress = () => {
+    cartStore.checkoutCart();
+    this.props.navigation.navigate("Profile", {});
+  };
+
   render() {
     const cartItems = cartStore.items.map(item => (
       <CartItem item={item} key={item.id} />
@@ -17,7 +22,7 @@ class CarCart extends Component {
     return (
       <List>
         {cartItems}
-        <Button full danger onPress={() => this.checkoutCart()}>
+        <Button full danger onPress={() => this.handlePress()}>
           <Text>Checkout</Text>
         </Button>
       </List>

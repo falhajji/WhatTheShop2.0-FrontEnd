@@ -3,12 +3,10 @@ import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
-import historyStore from "../../stores/historyStore";
 
 class OrderItem extends Component {
   render() {
     const { order } = this.props;
-    console.log("Order Item", order);
     return (
       <ListItem style={{ borderBottomWidth: 0 }}>
         <Left>

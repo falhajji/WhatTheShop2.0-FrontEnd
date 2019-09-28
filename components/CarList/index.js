@@ -15,7 +15,7 @@ class CarList extends Component {
   });
 
   render() {
-    let carList = carStore.cars.map(item => (
+    let carList = carStore.availableCars.map(item => (
       <CarItem item={item} key={item.id} />
     ));
     if (carStore.loading) {

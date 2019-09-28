@@ -3,6 +3,7 @@ import { instance } from "./instance";
 
 class CarStore {
   cars = null;
+  availableCars = null;
   loading = true;
 
   fetchAllCars = async () => {
@@ -10,6 +11,7 @@ class CarStore {
       let res = await instance.get("products/list/");
       this.cars = res.data;
       this.loading = false;
+      this.availableCars = this.cars;
     } catch (err) {
       console.error(err.response.data);
     }
@@ -17,13 +19,21 @@ class CarStore {
   getCarById = id => {
     return this.cars.find(car => car.id == id);
   };
+  removeCar = deletedCar => {
+    this.availableCars = this.availableCars.filter(
+      car => car.id !== deletedCar.id
+    );
+  };
 }
 decorate(CarStore, {
   cars: observable,
+  availableCars: observable,
   loading: observable
 });
 
 let carStore = new CarStore();
-carStore.fetchAllCars();
+if (!carStore.cars) {
+  carStore.fetchAllCars();
+}
 
 export default carStore;

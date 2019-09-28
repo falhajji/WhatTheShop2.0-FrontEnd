@@ -11,7 +11,7 @@ import ProfileScreen from "../components/Profile";
 
 const CarStack = createStackNavigator(
   {
-    Carlist: CarList,
+    CarList: CarList,
     CarDetail: CarDetail,
     CarCart: CarCart,
     Login: Login,
@@ -19,7 +19,7 @@ const CarStack = createStackNavigator(
     // Checkout: CheckoutScreen
   },
   {
-    initialRouteName: "Carlist",
+    initialRouteName: "CarList",
     defaultNavigationOptions: {
       title: "Car Shop"
     }
