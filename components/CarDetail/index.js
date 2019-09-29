@@ -88,7 +88,6 @@ class CarDetail extends Component {
                   source={{ uri: item.image }}
                   style={{ height: 250, width: 400, flex: 1 }}
                 />
-
                 <Text style={styles.text}>
                   Description
                   <Icon name="info" type="MaterialIcons" color="#517fa4" />
@@ -106,23 +105,28 @@ class CarDetail extends Component {
                   {"\n"}This {car.year} {car.maker} {car.model} comes with a
                   milage of {car.milage}.
                 </Text> */}
-                <Text style={styles.textlist}>
-                  {"\n"}Color:{"\n"}
-                  {item.color}
-                  {"\n"}
+                <Text style={styles.text}>
+                  Color <Icon name="ios-color-fill" type="Ionicons" />
                 </Text>
-                <Text style={styles.textlist}>
-                  Gear:{"\n"}
-                  {item.gear}
-                  {"\n"}
+                <Text style={styles.textlist}>{item.color}</Text>
+                <Text style={styles.text}>
+                  Gear {""}
+                  <Icon name="car-brake-alert" type="MaterialCommunityIcons" />
                 </Text>
-                <Text style={styles.textlist}>
-                  Seats:{"\n"}
-                  {item.seats}
+                <Text style={styles.textlist}>{item.gear}</Text>
+                <Text style={styles.text}>
+                  Seats {""}
+                  <Icon
+                    name="airline-seat-recline-extra"
+                    type="MaterialIcons"
+                  />
                 </Text>
-                <Text style={styles.textlist}>
-                  Price:{"\n"}KD {item.price + "\n"}
+                <Text style={styles.textlist}>Four{"\n"}</Text>
+
+                <Text style={styles.text}>
+                  Price <Icon name="coins" type="FontAwesome5" />
                 </Text>
+                <Text style={styles.textlist}>KD {item.price + "\n"}</Text>
               </Body>
             </CardItem>
             <CardItem>

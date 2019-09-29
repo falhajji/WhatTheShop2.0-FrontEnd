@@ -40,6 +40,7 @@ class Profile extends Component {
     if (authStore.user) {
       profileStore.fetchProfile();
       profileStore.fetchHistory();
+      profileStore.fetchNotification();
       cartStore.fetchCart();
     }
   }
