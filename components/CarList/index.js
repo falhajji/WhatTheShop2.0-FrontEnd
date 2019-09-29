@@ -9,7 +9,7 @@ import LogoutButton from "../Buttons/LogoutButton";
 
 class CarList extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "                    Car List",
+    title: "    Wheels Deals Car List",
     headerRight: <CartButton />,
     headerLeft: <LogoutButton />
   });

@@ -16,6 +16,7 @@ import {
   Content,
   Header
 } from "native-base";
+import { Image } from "react-native";
 
 // Store
 import authStore from "../../stores/authStore";
@@ -29,6 +30,7 @@ class Signup extends Component {
     first_name: "",
     last_name: ""
   };
+  logo = require("../../assets/wheels-deals-logo.png");
   static navigationOptions = ({ navigation }) => ({
     title: "Sign Up"
     // headerLeft: null
@@ -45,12 +47,18 @@ class Signup extends Component {
         <Header />
         <Content>
           <Card>
-            <Title>Welcome to the Cool Carz App</Title>
+            {/* <Image
+              source={this.logo}
+              style={{
+                width: "30%"
+              }}
+            /> */}
+            <Title>Welcome to the Wheels Deals App!</Title>
             <CardItem>
               <Form>
                 <Text>
                   {" "}
-                  Sign Up to start using this app and see some Cool Carz
+                  Sign Up to start using this app and see some cool cars
                 </Text>
                 <Item>
                   <Input
@@ -89,8 +97,15 @@ class Signup extends Component {
                 </Button>
               </Form>
             </CardItem>
+
+            {/* </CardItem> */}
+          </Card>
+          <Card>
             <CardItem>
-              <Text>If you already have an account with Cool Carz</Text>
+              <Text>
+                If you already have an account with Wheels Deals, sign in to
+                your account
+              </Text>
             </CardItem>
             <CardItem>
               <Button
@@ -101,7 +116,6 @@ class Signup extends Component {
                 <Text>Login</Text>
               </Button>
             </CardItem>
-            {/* </CardItem> */}
           </Card>
         </Content>
       </Container>

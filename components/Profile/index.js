@@ -26,7 +26,7 @@ import cartStore from "../../stores/cartStore";
 import NotificationButton from "../Buttons/NotificationButton";
 class Profile extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Car List",
+    title: "Profile Page",
     headerLeft: null,
     headerRight: <NotificationButton />
   });
@@ -81,19 +81,32 @@ class Profile extends Component {
     return (
       <Container>
         <Content padder>
-          <Text>Welcome! {profileStore.profile.email}</Text>
-          <Text>{"\n"}Order History</Text>
-          <Accordion
-            renderContent={_renderContent}
-            dataArray={dataArray}
-            style={{ marginTop: 20 }}
-          />
+          <Card>
+            <CardItem>
+              <Text style={{ fontWeight: "bold", fontSize: 30 }}>
+                Welcome {profileStore.profile.email} !
+              </Text>
+              <Text></Text>
+            </CardItem>
+          </Card>
+          <Card>
+            <CardItem>
+              <Text>{"\n"}Your Order History</Text>
+            </CardItem>
+
+            <Accordion
+              renderContent={_renderContent}
+              dataArray={dataArray}
+              style={{ marginTop: 20 }}
+            />
+          </Card>
+
           <Button
             danger
             onPress={() => authStore.logout(this.props.navigation)}
-            style={{ marginTop: 20 }}
+            style={{ marginTop: 20, width: 300 }}
           >
-            <Text>Logout</Text>
+            <Text style={{ textAlign: "center" }}>Logout</Text>
           </Button>
         </Content>
       </Container>
