@@ -1,15 +1,18 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 // Components
-import Profile from "../components/Profile";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
+import ProfileScreen from "../components/Profile";
+import LoginScreen from "../components/Login";
+import SignupScreen from "../components/Signup";
+import CarList from "../components/CarList";
+
 const ProfileStack = createStackNavigator(
   {
     // Welcome: WelcomeScreen,
-    Profile: Profile,
-    Login: Login,
-    Signup: Signup
+    Profile: ProfileScreen,
+    Login: LoginScreen,
+    Signup: SignupScreen,
+    CarList: CarList
   },
   {
     initialRouteName: "Profile",

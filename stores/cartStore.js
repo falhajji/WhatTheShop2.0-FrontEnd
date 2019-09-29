@@ -6,6 +6,7 @@ import carStore from "../stores/carStore";
 class CartStore {
   items = [];
   loading = true;
+  totalz = 0;
 
   addItemToCart = async item => {
     const exists = this.items.find(cartItem => cartItem.id === item.id);
@@ -63,10 +64,12 @@ class CartStore {
   fetchCart = async () => {
     try {
       const res = await instance.get("cart/");
-      this.item = [];
+      this.items = [];
       res.data.cart_items.forEach(cartItem =>
         this.items.push(carStore.getCarById(cartItem.product))
       );
+      console.log("fetchcar", this.items);
+      this.totalz = res.data.total;
       this.loading = false;
     } catch (err) {
       if (res.status === 404) {

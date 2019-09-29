@@ -45,11 +45,15 @@ class Profile extends Component {
     }
   }
   render() {
-    if (!authStore.user) this.props.navigation.replace("Signup");
+    if (!authStore.user) this.props.navigation.replace("Login");
+
     if (authStore.loading) return <Spinner />;
     const dataArray = [];
     profileStore.carts.forEach(cart =>
-      dataArray.push({ title: "x", content: cart })
+      dataArray.push({
+        title: "Order Total: " + cart.total + "KD",
+        content: cart
+      })
     );
 
     _renderContent = item => {
@@ -78,7 +82,8 @@ class Profile extends Component {
     return (
       <Container>
         <Content padder>
-          <Text>Welcome! {profileStore.profile.first_name}</Text>
+          <Text>Welcome! {profileStore.profile.email}</Text>
+          <Text>{"\n"}Order History</Text>
           <Accordion
             renderContent={_renderContent}
             dataArray={dataArray}

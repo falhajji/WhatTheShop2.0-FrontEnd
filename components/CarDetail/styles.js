@@ -2,12 +2,18 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   text: {
+    color: "#191970",
+    fontSize: 17,
+    fontWeight: "bold"
+  },
+  textlist: {
     color: "black",
-    fontSize: 15,
-    marginLeft: 16,
-
-    justifyContent: "center",
-    alignItems: "center"
+    fontSize: 15
+  },
+  headline: {
+    color: "black",
+    fontSize: 13,
+    fontWeight: "bold"
   },
   divider: {
     borderBottomColor: "black",

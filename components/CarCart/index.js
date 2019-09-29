@@ -15,6 +15,8 @@ class CarCart extends Component {
   };
 
   render() {
+    let total = 0;
+    cartStore.items.map(item => (total = total + parseInt(item.price)));
     const cartItems = cartStore.items.map(item => (
       <CartItem item={item} key={item.id} />
     ));
@@ -22,6 +24,7 @@ class CarCart extends Component {
     return (
       <List>
         {cartItems}
+        <Text> {total}</Text>
         <Button full danger onPress={() => this.handlePress()}>
           <Text>Checkout</Text>
         </Button>
