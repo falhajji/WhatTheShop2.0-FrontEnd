@@ -5,7 +5,7 @@ class ProfileStore {
   loading = true;
   carts = [];
   cart = "";
-
+  notifications = [];
   fetchProfile = async () => {
     try {
       let res = await instance.get("accounts/");
@@ -13,6 +13,19 @@ class ProfileStore {
       this.loading = false;
     } catch (err) {
       console.error(err.stack);
+    }
+  };
+  fetchNotification = async () => {
+    try {
+      let res = await instance.get("notification/");
+      this.notifications = res.data;
+      this.loading = false;
+    } catch (err) {
+      if (res.status === 404) {
+        this.notifications = [];
+      } else {
+        console.error(err.status);
+      }
     }
   };
   addToHistory = cart => {
