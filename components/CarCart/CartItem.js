@@ -27,6 +27,7 @@ class CartItem extends Component {
           <Thumbnail square source={{ uri: item.image }} />
         </Left>
         <Body>
+          <Text></Text>
           <Text>
             {item.manufacturer} {item.model} {item.year}
           </Text>

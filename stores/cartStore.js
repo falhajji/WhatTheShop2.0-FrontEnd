@@ -35,6 +35,19 @@ class CartStore {
     }
   };
 
+  editItemFromCart = async editedItem => {
+    try {
+      const res = await instance.put("cart/", {
+        data: {
+          product: editedItem.id
+        }
+      });
+      this.items = this.items.filter(item => item.id !== editedItem.id);
+    } catch (err) {
+      console.error(err.response.data);
+    }
+  };
+
   //   checkoutCart = async () => {
   //     try {
   //       const res = await instance.get("cart/checkout/");
